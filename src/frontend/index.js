@@ -5,7 +5,7 @@ require('purecss');
 
 class Brew extends React.Component {
   render() {
-    return <div>Hello {this.props.name}</div>;
+    return (<div style="visible: none;">Hello {this.props.name}</div>);
   }
 }
 
