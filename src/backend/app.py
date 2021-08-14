@@ -8,6 +8,6 @@ for ss in wn.synsets("fast"):
 
 print("-" * 50)
 
-for ss in wn.synsets("quick"):
-    print(ss.lemmas())
-    
+for ss in wn.synsets("strong"):
+    for w in ss.relations().get("similar") or []:
+        print(w.lemmas())
