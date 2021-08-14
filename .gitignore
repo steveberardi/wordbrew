@@ -4,6 +4,10 @@ __pycache__/
 *$py.class
 
 
+# macOS stuff
+.DS_STORE
+
+# node
 node_modules/
 
 # Distribution / packaging
