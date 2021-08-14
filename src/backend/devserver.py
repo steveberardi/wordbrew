@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 from wordbrew import brew
 
@@ -8,7 +8,9 @@ app = Flask(__name__)
 def get_synonyms():
     query = request.args.get("query", "")
     result = brew(query)
-    return {"result": result}
+    response = jsonify({'result': result})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 

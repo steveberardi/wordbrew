@@ -1,4 +1,8 @@
 
+.pure-g {
+    text-align: center;
+}
+            
 .navbar {
     height: 60px;
     padding: 20px;
@@ -27,4 +31,5 @@
 .button-brew {
     background-color: rgb(99, 85, 52);
     color:  white;
+    margin-left: 8px;
 }
