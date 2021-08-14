@@ -1,7 +1,6 @@
-
-
 def brew(query):
     import wn
+
     result = []
 
     for ss in wn.synsets(query):

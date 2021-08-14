@@ -33,7 +33,6 @@ function Brew () {
         </div>
         <div className="pure-u-2-3">
             
-
             <form className="pure-form">
               <fieldset>
                 <input type="text" className="pure-input-2-3 pure-input-rounded" onChange={e => setQuery(e.target.value)}/>
@@ -44,10 +43,11 @@ function Brew () {
         </div>
       </div>
 
+      <br/>
+
       <div className="pure-g">
         <div className="pure-u-1-3"></div>
         <div className="pure-u-1-3">
-
           {items.map(item => (
               <p key={item}>
               { item }
@@ -58,6 +58,7 @@ function Brew () {
 
         
       </div>
+      
 
     </div>
     
