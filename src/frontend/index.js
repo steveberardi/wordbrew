@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-require('purecss');
+import Button from 'react-bootstrap/Button';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import { Form, FormControl } from 'react-bootstrap';
+
+
+//import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss';
+import './style.css';
 
 function Brew () {
   const [query, setQuery] = useState("");
@@ -27,34 +35,47 @@ function Brew () {
   }
   return (
     <div>
-      <div className="navbar pure-g">
-        <div className="pure-u-1-6">
-          <p className="navbar-header"><img className="pure-img navbar-logo" src="images/wordbrew.png"/> WordBrew</p>
-        </div>
-        <div className="pure-u-2-3">
-            
-            <form className="pure-form">
-              <fieldset>
-                <input type="text" className="pure-input-2-3 pure-input-rounded" onChange={e => setQuery(e.target.value)}/>
-                <button className="pure-button button-brew" onClick={handleSubmit} style={{ background: "#ed9547", color: "white", borderRadius: "4px"}}>Brew!</button>
-              </fieldset>
-            </form>
 
-        </div>
-      </div>
+
+      <Navbar bg="light" variant="light">
+        <Container>
+          <Navbar.Brand href="/">
+            <img
+              alt="logo"
+              src="images/wordbrew.png"
+              width="32"
+              height="32"
+              className="d-inline-block align-top"
+            />{' '}
+          WordBrew
+          </Navbar.Brand>
+          <Form className="d-flex w-75 text-center">
+            <FormControl
+              type="search"
+              placeholder=""
+              className="mr-2"
+              aria-label="Search"
+              onChange={e => setQuery(e.target.value)}
+            />
+            <Button variant="primary" className="btn-brew" onClick={handleSubmit} type="submit">Brew</Button>
+          </Form>
+        </Container>
+      </Navbar>
+
+      
 
       <br/>
 
-      <div className="pure-g">
-        <div className="pure-u-1-3"></div>
-        <div className="pure-u-1-3">
+      <div className="row">
+        <div className="col"></div>
+        <div className="col justify-content-center">
           {items.map(item => (
               <p key={item}>
               { item }
               </p>
           ))}
         </div>
-        <div className="pure-u-1-3"></div>
+        <div className="col"></div>
 
         
       </div>

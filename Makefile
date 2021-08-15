@@ -21,7 +21,7 @@ lint: $(VENV)/bin/activate
 	$(BIN)/flake8 src/backend/*
 
 devserver:
-	$(BIN)/flask run	
+	$(BIN)/flask run
 
 start:
 	$(BIN)/honcho -e .env,.env.dev start
