@@ -1,0 +1,23 @@
+
+Frontend
+    - Separate into components
+        - WordResult
+        - ResultPage
+        - HomePage
+        - WordSearch
+    - Home page, result page
+    - Routes
+    - Result layout
+    - About page with Wordnet attribution
+    - Change css framework?
+    - Fix CSS import/loading to apply style.css last
+    - React CSS modules? https://github.com/gajus/babel-plugin-react-css-modules
+
+
+Backend
+    - Better result gathering
+    - Unit tests
+    - Move wordnet data to project dir
+
+
+https://stackoverflow.com/questions/18278219/wordnet-sql-explanation
