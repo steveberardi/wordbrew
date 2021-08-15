@@ -11,20 +11,20 @@ venv/bin/activate: requirements.txt requirements-dev.txt
 	$(PIP) install -r requirements.txt
 	$(PIP) install -r requirements-dev.txt
 
+envfile:
+	cp .env.dev .env
+
 format: $(VENV)/bin/activate
 	$(BIN)/black src/backend/*
 
 lint: $(VENV)/bin/activate
 	$(BIN)/flake8 src/backend/*
 
-devserver: export FLASK_ENV=development
-devserver: export FLASK_APP=src/backend/devserver
-devserver: export FLASK_RUN_PORT=8000
 devserver:
 	$(BIN)/flask run	
 
 start:
-	$(BIN)/honcho start
+	$(BIN)/honcho -e .env,.env.dev start
 
 clean:
 	rm -rf __pycache__

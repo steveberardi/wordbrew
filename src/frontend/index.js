@@ -12,7 +12,7 @@ function Brew () {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoaded(false);
-    fetch(`http://localhost:8000/?query=${query}`)
+    fetch(`${process.env.WORDBREW_API_URL}/?query=${query}`)
       .then(res => res.json())
       .then(
         (result) => {
