@@ -39,7 +39,7 @@ function Brew () {
 
       <Navbar bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="/">
+          <Navbar.Brand href="/" className="text-dark">
             <img
               alt="logo"
               src="images/wordbrew.png"
