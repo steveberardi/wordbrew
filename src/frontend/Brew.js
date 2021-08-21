@@ -1,0 +1,102 @@
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useLocation
+} from "react-router-dom";
+
+import Button from 'react-bootstrap/Button';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import { Row, Col } from 'react-bootstrap';
+import { Form, FormControl } from 'react-bootstrap';
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
+export const Brew = () => {
+  const [query, setQuery] = useState("");
+  const [items, setItems] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(true);
+
+  let word = useQuery();
+
+  useEffect(() => {
+    console.log(word);
+
+    fetch(`${process.env.WORDBREW_API_URL}/?query=${word.get("query")}`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result.result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+
+  }, [query]);
+
+  return (
+    <div>
+    
+      <Navbar bg="light" variant="light">
+        <Container>
+          <Navbar.Brand href="/" className="text-dark">
+            <img
+              alt="logo"
+              src="images/wordbrew.png"
+              width="32"
+              height="32"
+              className="d-inline-block align-top"
+            />{' '}
+          WordBrew
+          </Navbar.Brand>
+          <Form className="d-flex w-75 text-center" method="get" action="/brew">
+            <FormControl
+              type="search"
+              placeholder=""
+              className="mr-2"
+              aria-label="Search"
+              name="query"
+              defaultValue={word.get("query")}
+            />
+            <Button variant="primary" className="btn-brew"  type="submit">Brew</Button>
+          </Form>
+        </Container>
+      </Navbar>
+
+      
+
+      <br/>
+
+      <Row>
+        <Col md={2}></Col>
+        
+        <Col className="justify-content-center">
+          {items.map(item => (
+              <p key={item}>
+              { item }
+              </p>
+          ))}
+        </Col>
+
+        <Col md={2}></Col>
+      </Row>
+      
+
+    </div>
+    
+  );
+}
+
+export default Brew;
