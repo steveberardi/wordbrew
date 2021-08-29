@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link,
   useParams,
   useLocation
@@ -15,6 +12,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
+
+import { Badge } from 'react-bootstrap';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -29,7 +28,6 @@ export const Brew = () => {
   let word = useQuery();
 
   useEffect(() => {
-    console.log(word);
 
     fetch(`${process.env.WORDBREW_API_URL}/?query=${word.get("query")}`)
       .then(res => res.json())
@@ -44,12 +42,12 @@ export const Brew = () => {
         }
       )
 
-  }, [query]);
+  }, [word.get("query")]);
 
   return (
     <div>
-    
-      <Navbar bg="light" variant="light">
+     
+      <Navbar bg="light" variant="light" expand="md">
         <Container>
           <Navbar.Brand href="/" className="text-dark">
             <img
@@ -62,20 +60,18 @@ export const Brew = () => {
           WordBrew
           </Navbar.Brand>
           <Form className="d-flex w-75 text-center" method="get" action="/brew">
-            <FormControl
-              type="search"
-              placeholder=""
-              className="mr-2"
-              aria-label="Search"
-              name="query"
-              defaultValue={word.get("query")}
-            />
-            <Button variant="primary" className="btn-brew"  type="submit">Brew</Button>
+              <FormControl
+                type="search"
+                placeholder=""
+                className="mr-2"
+                aria-label="Search"
+                name="query"
+                defaultValue={word.get("query")}
+              />
+              <Button variant="primary" type="submit" className="mx-2">Brew</Button>
           </Form>
         </Container>
       </Navbar>
-
-      
 
       <br/>
 
@@ -84,9 +80,9 @@ export const Brew = () => {
         
         <Col className="justify-content-center">
           {items.map(item => (
-              <p key={item}>
-              { item }
-              </p>
+              <span key={item}>
+              <Badge pill bg="light" text="dark">{ item }</Badge>
+              </span>
           ))}
         </Col>
 

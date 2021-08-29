@@ -14,6 +14,9 @@ venv/bin/activate: requirements.txt requirements-dev.txt
 envfile:
 	cp .env.dev .env
 
+shell: $(VENV)/bin/activate
+	$(PYTHON)
+
 format: $(VENV)/bin/activate
 	$(BIN)/black src/backend/*
 

@@ -7,8 +7,10 @@ import {
   Route
 } from "react-router-dom";
 
-import { Home } from './Home'
-import { Brew } from './Brew'
+import { Home } from './Home';
+import { About } from './About';
+import { Brew } from './Brew';
+import { Footer } from './Footer';
 
 import './App.scss';
 import './style.css';
@@ -18,12 +20,14 @@ function App() {
     <Router>
       <Switch>
 
-        <Route path="/about">
-        
-        </Route>
-
         <Route path="/brew">
           <Brew />
+          <Footer />
+        </Route>
+        
+        <Route path="/about">
+          <About />
+          <Footer />
         </Route>
 
         <Route path="/">

@@ -11,17 +11,11 @@ a.navbar-brand {
     color: #543400;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    font-weight: 600;
-}
-
 input.form-control {
     border-radius: 20px;
 }
 
-.btn-brew {
-    background-color: rgb(237, 149, 71);
-    color:  white;
-    margin-left: 8px;
-    border-radius: 10px;
+.badge {
+    
+    margin: 2px;
 }

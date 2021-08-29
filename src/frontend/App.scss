@@ -1,3 +1,5 @@
+$primary: rgb(237, 149, 71);
+$dark: #5c3d00;
 
 $theme-colors: (
     "primary": rgb(237, 149, 71),
@@ -5,5 +7,15 @@ $theme-colors: (
     "dark": #5c3d00
 );
 
+$body-color: $dark;
+
+$headings-font-weight: 600;
+
+// Buttons
+$btn-border-radius: 10px;
+
+
+// Badges
+$badge-font-size: 1em;
 
 @import "~bootstrap/scss/bootstrap";
