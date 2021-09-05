@@ -46,7 +46,6 @@ export const Brew = () => {
 
   return (
     <div>
-     
       <Navbar bg="light" variant="light" expand="md">
         <Container>
           <Navbar.Brand href="/" className="text-dark">
@@ -73,9 +72,7 @@ export const Brew = () => {
         </Container>
       </Navbar>
 
-      <br/>
-
-      <Row>
+      <Row className="bg-white py-5">
         <Col md={2}></Col>
         
         <Col className="justify-content-center">
@@ -88,10 +85,8 @@ export const Brew = () => {
 
         <Col md={2}></Col>
       </Row>
-      
 
     </div>
-    
   );
 }
 

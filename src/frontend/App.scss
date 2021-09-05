@@ -1,5 +1,6 @@
 $primary: rgb(237, 149, 71);
 $dark: #5c3d00;
+$light: #f2e8d0;
 
 $theme-colors: (
     "primary": rgb(237, 149, 71),
@@ -8,8 +9,13 @@ $theme-colors: (
 );
 
 $body-color: $dark;
+$body-bg: $light;
+
+$input-bg: rgb(255, 255, 255);
 
 $headings-font-weight: 600;
+
+$min-contrast-ratio: 3;
 
 // Buttons
 $btn-border-radius: 10px;

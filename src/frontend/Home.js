@@ -38,7 +38,6 @@ export const Home = () => {
         <Col md={2}></Col>
       </Row>
     </Container>
-
   );
 };
 
