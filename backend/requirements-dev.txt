@@ -1,5 +1,4 @@
 pytest
-flask
 honcho
 flake8
 black

@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Uncompressed Wordnet db
+wn.db
 
 # macOS stuff
 .DS_STORE

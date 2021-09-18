@@ -1,3 +1,4 @@
+"""
 import wn
 
 for ss in wn.synsets("fast"):
@@ -7,7 +8,7 @@ for ss in wn.synsets("fast"):
     print(set(synos))
 
 print("-" * 50)
-"""
+
 for ss in wn.synsets("strong"):
     for w in ss.relations().get("similar") or []:
         print(w.lemmas())

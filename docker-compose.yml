@@ -1,0 +1,29 @@
+version: '2'
+services:
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app:r
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=server
+      - FLASK_RUN_PORT=8000
+    command: flask run --host=0.0.0.0
+  
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app:r
+      - node-modules:/app/node_modules
+    environment:
+      - WORDBREW_API_URL=http://localhost:8000
+    command: npm start
+    restart: on-failure
+
+volumes:
+  node-modules:

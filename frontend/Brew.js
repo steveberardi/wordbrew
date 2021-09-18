@@ -10,6 +10,7 @@ import {
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import Spinner from 'react-bootstrap/Spinner';
 import { Row, Col } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
 
@@ -28,7 +29,7 @@ export const Brew = () => {
   let word = useQuery();
 
   useEffect(() => {
-
+    setIsLoaded(false);
     fetch(`${process.env.WORDBREW_API_URL}/?query=${word.get("query")}`)
       .then(res => res.json())
       .then(
@@ -76,11 +77,20 @@ export const Brew = () => {
         <Col md={2}></Col>
         
         <Col className="justify-content-center">
-          {items.map(item => (
-              <span key={item}>
-              <Badge pill bg="light" text="dark">{ item }</Badge>
-              </span>
-          ))}
+          { isLoaded ? 
+              items.map(item => (
+                <span key={item}>
+                <Badge pill bg="light" text="dark">{ item }</Badge>
+                </span>
+              ))
+      
+      
+          :
+          <div className="text-center">
+            <Spinner animation="border" variant="dark"/>
+          </div>
+          }
+
         </Col>
 
         <Col md={2}></Col>

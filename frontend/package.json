@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel src/frontend/index.html"
+    "start": "parcel index.html --port 3000"
   },
   "staticFiles": {
-    "staticPath": "src/frontend/static",
+    "staticPath": "static",
     "watcherGlob": "**"
   },
   "repository": {

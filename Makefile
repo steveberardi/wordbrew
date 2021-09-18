@@ -23,7 +23,13 @@ format: $(VENV)/bin/activate
 lint: $(VENV)/bin/activate
 	$(BIN)/flake8 src/backend/*
 
-devserver:
+docker-build:
+	docker image build -t wordbrew .
+
+docker-run:
+	docker run -p 5001:5000 -d wordbrew
+
+server:
 	$(BIN)/flask run
 
 start:
