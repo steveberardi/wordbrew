@@ -1,5 +1,3 @@
-import pathlib
-
 import wn
 
 wn.config.allow_multithreading = True
