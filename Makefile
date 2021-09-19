@@ -1,30 +1,23 @@
-VENV=venv
-BIN=$(VENV)/bin
-PIP=$(BIN)/pip
-PYTHON=$(BIN)/python
+DOCKER_EXEC=docker exec -it wordbrew_backend_1
 
-run: $(VENV)/bin/activate
-	$(PYTHON) src/backend/app.py
+format:
+	$(DOCKER_EXEC) black /app
 
-venv/bin/activate: requirements.txt requirements-dev.txt
-	python -m venv $(VENV)
-	$(PIP) install -r requirements.txt
-	$(PIP) install -r requirements-dev.txt
+lint:
+	$(DOCKER_EXEC) flake8 /app
 
-format: $(VENV)/bin/activate
-	$(BIN)/black src/backend/*
-
-lint: $(VENV)/bin/activate
-	$(BIN)/flake8 src/backend/*
+build:
+	docker compose build
 
 up:
 	docker compose up
 
 shell:
-	docker exec -it wordbrew_backend_1 python
+	$(DOCKER_EXEC) python
 
 clean:
-	rm -rf __pycache__
-	rm -rf $(VENV)
+	rm -rf backend/__pycache__
+	rm -rf frontend/dist
+	rm -rf frontend/node_modules
 
-.PHONY: run clean
+.PHONY: clean
