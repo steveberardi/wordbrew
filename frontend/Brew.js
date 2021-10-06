@@ -21,6 +21,23 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
+const ResultColumns = ({header, results}) => {
+  return (
+    <div>
+      <h4>{header}</h4>
+      <div className="row row-cols-4">{ results.map( (item, index) => (
+        <div className="col" key={index}>
+          <a href={`/brew?query=${item}`}>
+            <Badge pill bg="dark opacity-50">{item}</Badge>
+          </a>
+        </div>
+      )) }
+      </div>
+      <hr/><br/>
+    </div>
+  )
+};
+
 export const Brew = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
@@ -80,68 +97,41 @@ export const Brew = () => {
         <Col className="justify-content-center">
           <Accordion defaultActiveKey="0">
           { isLoaded ? 
+              results.length > 0 ?
+                results.map( (result, index) => (
+                  <Accordion.Item eventKey={index.toString()} key={index}>
 
-              results.map( (result, index) => (
-                <Accordion.Item eventKey={index.toString()}>
+                    <Accordion.Header>
+                      <span className="fs-2 fw-bold">{word.get("query")}</span>
+                      &nbsp;
+                      <Badge bg="light opacity-50 text-dark">{result.pos}</Badge>
+                      &nbsp;
+                      <span className="small lead text-light">{result.definition}</span>
+                    </Accordion.Header>
 
-                  <Accordion.Header>
-                    <span class="fs-2 fw-bold">{word.get("query")}</span>
-                    &nbsp;
-                    <Badge>{result.pos}</Badge>
-                    &nbsp;
-                    <span class="small lead text-light">{result.definition}</span>
-                  </Accordion.Header>
+                    <Accordion.Body>
+                      {
+                        result.hyponyms.length > 0 && 
+                        <ResultColumns header="More Specific" results={result.hyponyms} />  
+                      }
+                      {
+                        result.hypernyms.length > 0 &&
+                        <ResultColumns header="Less Specific" results={result.hypernyms} />
+                      }
+                      { 
+                        result.similar.length > 0 &&
+                        <ResultColumns header="Similar" results={result.similar} />
+                      }
+                    </Accordion.Body>
 
-                  <Accordion.Body>
-                    {
-                      result.hyponyms.length > 0 && 
-                      <div>
-                        <h4>More Specific</h4>
-                        <div class="row row-cols-4">{ result.hyponyms.map( item => (
-                          <div class="col">
-                            <a href={`/brew?query=${item}`}>
-                              <Badge pill bg="dark opacity-50">{item}</Badge>
-                            </a>
-                          </div>
-                        )) }
-                        </div>
-                        <hr/><br/>
-                      </div>
-                    }
-                    {
-                      result.hypernyms.length > 0 &&
-                      <div>
-                        <h4>Less Specific</h4>
-                        <div class="row row-cols-4">{ result.hypernyms.map( item => (
-                          <div class="col">
-                            <a href={`/brew?query=${item}`}>
-                              <Badge pill bg="dark opacity-50">{item}</Badge>
-                            </a>
-                          </div>
-                        )) }
-                        </div>
-                        <hr/><br/>
-                      </div>
-                    }
-                    { 
-                      result.similar.length > 0 &&
-                      <div>
-                        <h4>Similar</h4>
-                        <div class="row row-cols-4">{ result.similar.map( item => (
-                          <div class="col">
-                            <a href={`/brew?query=${item}`}>
-                              <Badge pill bg="dark opacity-50">{item}</Badge>
-                            </a>
-                          </div>
-                        )) }
-                        </div>
-                        <br/><br/>
-                      </div>
-                    }
-                  </Accordion.Body>
-
-                </Accordion.Item>  
-              ))
+                  </Accordion.Item>  
+                ))
+                :
+                <p className="alert alert-dark lead text-center">
+                  <br/><br/>
+                  No results found, keep brewing!
+                  <br/><br/>
+                </p>
           :
           <div className="text-center">
             <Spinner animation="border" variant="dark"/>
