@@ -1,11 +1,13 @@
 $primary: rgb(237, 149, 71);
+$secondary: #cec1a5;
 $dark: #5c3d00;
 $light: #f2e8d0;
+$white: #fff;
 
 $theme-colors: (
-    "primary": rgb(237, 149, 71),
-    "light": #f2e8d0,
-    "dark": #5c3d00
+    "primary": $primary,
+    "light": $light,
+    "dark": $dark
 );
 
 $body-color: $dark;
@@ -17,9 +19,15 @@ $headings-font-weight: 600;
 
 $min-contrast-ratio: 3;
 
+// Accordions
+$accordion-bg: $light;
+$accordion-button-bg: $secondary;
+
+$accordion-button-active-bg: $primary;
+$accordion-button-active-color: $light;
+
 // Buttons
 $btn-border-radius: 10px;
-
 
 // Badges
 $badge-font-size: 1em;

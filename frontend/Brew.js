@@ -14,6 +14,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { Row, Col } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
 
+import { Accordion } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
 
 function useQuery() {
@@ -22,7 +23,7 @@ function useQuery() {
 
 export const Brew = () => {
   const [query, setQuery] = useState("");
-  const [items, setItems] = useState([]);
+  const [results, setResults] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(true);
 
@@ -35,7 +36,7 @@ export const Brew = () => {
       .then(
         (result) => {
           setIsLoaded(true);
-          setItems(result.result);
+          setResults(result.result);
         },
         (error) => {
           setIsLoaded(true);
@@ -77,20 +78,76 @@ export const Brew = () => {
         <Col md={2}></Col>
         
         <Col className="justify-content-center">
+          <Accordion defaultActiveKey="0">
           { isLoaded ? 
-              items.map(item => (
-                <span key={item}>
-                <Badge pill bg="light" text="dark">{ item }</Badge>
-                </span>
+
+              results.map( (result, index) => (
+                <Accordion.Item eventKey={index.toString()}>
+
+                  <Accordion.Header>
+                    <span class="fs-2 fw-bold">{word.get("query")}</span>
+                    &nbsp;
+                    <Badge>{result.pos}</Badge>
+                    &nbsp;
+                    <span class="small lead text-light">{result.definition}</span>
+                  </Accordion.Header>
+
+                  <Accordion.Body>
+                    {
+                      result.hyponyms.length > 0 && 
+                      <div>
+                        <h4>More Specific</h4>
+                        <div class="row row-cols-4">{ result.hyponyms.map( item => (
+                          <div class="col">
+                            <a href={`/brew?query=${item}`}>
+                              <Badge pill bg="dark opacity-50">{item}</Badge>
+                            </a>
+                          </div>
+                        )) }
+                        </div>
+                        <hr/><br/>
+                      </div>
+                    }
+                    {
+                      result.hypernyms.length > 0 &&
+                      <div>
+                        <h4>Less Specific</h4>
+                        <div class="row row-cols-4">{ result.hypernyms.map( item => (
+                          <div class="col">
+                            <a href={`/brew?query=${item}`}>
+                              <Badge pill bg="dark opacity-50">{item}</Badge>
+                            </a>
+                          </div>
+                        )) }
+                        </div>
+                        <hr/><br/>
+                      </div>
+                    }
+                    { 
+                      result.similar.length > 0 &&
+                      <div>
+                        <h4>Similar</h4>
+                        <div class="row row-cols-4">{ result.similar.map( item => (
+                          <div class="col">
+                            <a href={`/brew?query=${item}`}>
+                              <Badge pill bg="dark opacity-50">{item}</Badge>
+                            </a>
+                          </div>
+                        )) }
+                        </div>
+                        <br/><br/>
+                      </div>
+                    }
+                  </Accordion.Body>
+
+                </Accordion.Item>  
               ))
-      
-      
           :
           <div className="text-center">
             <Spinner animation="border" variant="dark"/>
           </div>
           }
-
+          </Accordion>
         </Col>
 
         <Col md={2}></Col>
