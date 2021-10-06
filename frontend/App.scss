@@ -1,6 +1,7 @@
 $primary: rgb(237, 149, 71);
 $secondary: #cec1a5;
-$dark: #5c3d00;
+$dark: #684808;
+$medium: #754f02;
 $light: #f2e8d0;
 $white: #fff;
 
@@ -20,6 +21,7 @@ $headings-font-weight: 600;
 $min-contrast-ratio: 3;
 
 // Accordions
+$accordion-color: $medium;
 $accordion-bg: $light;
 $accordion-button-bg: $secondary;
 

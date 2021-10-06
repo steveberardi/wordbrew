@@ -106,7 +106,7 @@ export const Brew = () => {
                       &nbsp;
                       <Badge bg="light opacity-50 text-dark">{result.pos}</Badge>
                       &nbsp;
-                      <span className="small lead text-light">{result.definition}</span>
+                      <span className="small lead">{result.definition}</span>
                     </Accordion.Header>
 
                     <Accordion.Body>
