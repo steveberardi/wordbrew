@@ -18,8 +18,8 @@ export const Home = () => {
             <img className="img-fluid" src="images/wordbrew.png" style={{ height: "240px" }}/>
             <br/><br/>
 
-            <h1 className="text-dark">WordBrew</h1>
-            <p className="lead text-muted">More than a thesaurus. Less than a beer.</p>
+            <h1>WordBrew</h1>
+            <p className="lead opacity-50">More than a thesaurus. Less than a beer.</p>
           </div>
           
           <br/>
