@@ -65,7 +65,7 @@ export const Brew = () => {
 
   return (
     <div>
-      <Navbar bg="light" variant="light" expand="md">
+      <Navbar bg="light" variant="light" expand="md" className="pb-2">
         <Container>
           <Navbar.Brand href="/" className="text-dark">
             <img
@@ -77,7 +77,7 @@ export const Brew = () => {
             />{' '}
           WordBrew
           </Navbar.Brand>
-          <Form className="d-flex w-100 text-center" method="get" action="/brew">
+          <Form className="d-flex w-100 mx-lg-4 text-center" method="get" action="/brew">
               <FormControl
                 type="search"
                 placeholder=""
@@ -91,7 +91,7 @@ export const Brew = () => {
         </Container>
       </Navbar>
 
-      <Row className="bg-white py-5">
+      <Row className="bg-white py-lg-5">
         <Col md={2}></Col>
         
         <Col className="justify-content-center">
