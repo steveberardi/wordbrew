@@ -103,9 +103,7 @@ export const Brew = () => {
 
                     <Accordion.Header>
                       <span className="fs-2 fw-bold">{word.get("query")}</span>
-                      &nbsp;
-                      <Badge bg="light opacity-50 text-dark">{result.pos}</Badge>
-                      &nbsp;
+                      <Badge bg="light opacity-50 text-dark mx-2">{result.pos}</Badge>
                       <span className="small lead">{result.definition}</span>
                     </Accordion.Header>
 
