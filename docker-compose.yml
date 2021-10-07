@@ -2,22 +2,23 @@ version: '3.4'
 services:
 
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      target: base
     ports:
       - "8000:8000"
     volumes:
       - ./backend:/app:r
   
   frontend:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      target: dev
     ports:
       - "3000:3000"
     volumes:
       - ./frontend:/app:r
       - node-modules:/app/node_modules
-    environment:
-      - WORDBREW_API_URL=http://localhost:8000
-    command: npm start
     restart: on-failure
 
 volumes:
