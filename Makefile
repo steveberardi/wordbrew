@@ -15,6 +15,9 @@ up:
 shell:
 	$(DOCKER_EXEC) python
 
+deploy:
+	gcloud run deploy --source=./backend --port=8000 --region=us-west2 wordbrew-api
+
 clean:
 	rm -rf backend/__pycache__
 	rm -rf frontend/dist

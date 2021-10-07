@@ -9,6 +9,7 @@ COPY . .
 RUN pip install -r requirements.txt
 
 # Download WordNet database
-RUN python -c "import wn; wn.download('https://storage.googleapis.com/sbref/wn.xml.gz')"
+ENV WN_DATA_PATH="/tmp"
+RUN python loadwn.py
 
 CMD exec gunicorn --bind :8000 --workers 1 --threads 8 --timeout 0 server:app

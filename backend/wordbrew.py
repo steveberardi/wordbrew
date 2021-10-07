@@ -1,9 +1,9 @@
-from collections import defaultdict
-
+import os
 import wn
 
 wn.config.allow_multithreading = True
-# wn.config.data_directory = pathlib.Path(__file__).parent.resolve()
+if os.environ.get("WN_DATA_PATH"):
+    wn.config.data_directory = os.environ.get("WN_DATA_PATH")
 
 def similar(query):
     result = []
