@@ -25,7 +25,7 @@ const ResultColumns = ({header, results}) => {
   return (
     <div>
       <h4>{header}</h4>
-      <div className="row row-cols-4">{ results.map( (item, index) => (
+      <div className="row row-cols-2 row-cols-sm-2 row-cols-md-4">{ results.map( (item, index) => (
         <div className="col" key={index}>
           <a href={`/brew?query=${item}`}>
             <Badge pill bg="dark opacity-50">{item}</Badge>
@@ -77,7 +77,7 @@ export const Brew = () => {
             />{' '}
           WordBrew
           </Navbar.Brand>
-          <Form className="d-flex w-75 text-center" method="get" action="/brew">
+          <Form className="d-flex w-100 text-center" method="get" action="/brew">
               <FormControl
                 type="search"
                 placeholder=""
