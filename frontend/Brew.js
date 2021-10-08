@@ -17,6 +17,8 @@ import { Form, FormControl } from 'react-bootstrap';
 import { Accordion } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
 
+import WordbrewLogo from './static/images/wordbrew.png';
+
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
@@ -70,7 +72,7 @@ export const Brew = () => {
           <Navbar.Brand href="/" className="text-dark">
             <img
               alt="logo"
-              src="images/wordbrew.png"
+              src={WordbrewLogo}
               width="32"
               height="32"
               className="d-inline-block align-top"
