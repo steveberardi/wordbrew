@@ -14,15 +14,33 @@ import Spinner from 'react-bootstrap/Spinner';
 import { Row, Col } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
 
+import { Accordion } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
+const ResultColumns = ({header, results}) => {
+  return (
+    <div>
+      <h4>{header}</h4>
+      <div className="row row-cols-2 row-cols-sm-2 row-cols-md-4">{ results.map( (item, index) => (
+        <div className="col" key={index}>
+          <a href={`/brew?query=${item}`}>
+            <Badge pill bg="dark opacity-50">{item}</Badge>
+          </a>
+        </div>
+      )) }
+      </div>
+      <hr/><br/>
+    </div>
+  )
+};
+
 export const Brew = () => {
   const [query, setQuery] = useState("");
-  const [items, setItems] = useState([]);
+  const [results, setResults] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(true);
 
@@ -35,7 +53,7 @@ export const Brew = () => {
       .then(
         (result) => {
           setIsLoaded(true);
-          setItems(result.result);
+          setResults(result.result);
         },
         (error) => {
           setIsLoaded(true);
@@ -47,7 +65,7 @@ export const Brew = () => {
 
   return (
     <div>
-      <Navbar bg="light" variant="light" expand="md">
+      <Navbar bg="light" variant="light" expand="md" className="pb-2">
         <Container>
           <Navbar.Brand href="/" className="text-dark">
             <img
@@ -59,7 +77,7 @@ export const Brew = () => {
             />{' '}
           WordBrew
           </Navbar.Brand>
-          <Form className="d-flex w-75 text-center" method="get" action="/brew">
+          <Form className="d-flex w-100 mx-lg-4 text-center" method="get" action="/brew">
               <FormControl
                 type="search"
                 placeholder=""
@@ -73,24 +91,51 @@ export const Brew = () => {
         </Container>
       </Navbar>
 
-      <Row className="bg-white py-5">
+      <Row className="bg-white py-lg-5">
         <Col md={2}></Col>
         
         <Col className="justify-content-center">
+          <Accordion defaultActiveKey="0">
           { isLoaded ? 
-              items.map(item => (
-                <span key={item}>
-                <Badge pill bg="light" text="dark">{ item }</Badge>
-                </span>
-              ))
-      
-      
+              results.length > 0 ?
+                results.map( (result, index) => (
+                  <Accordion.Item eventKey={index.toString()} key={index}>
+
+                    <Accordion.Header>
+                      <span className="fs-2 fw-bold">{word.get("query")}</span>
+                      <Badge bg="light opacity-50 text-dark mx-2">{result.pos}</Badge>
+                      <span className="small lead">{result.definition}</span>
+                    </Accordion.Header>
+
+                    <Accordion.Body>
+                      {
+                        result.hyponyms.length > 0 && 
+                        <ResultColumns header="More Specific" results={result.hyponyms} />  
+                      }
+                      {
+                        result.hypernyms.length > 0 &&
+                        <ResultColumns header="Less Specific" results={result.hypernyms} />
+                      }
+                      { 
+                        result.similar.length > 0 &&
+                        <ResultColumns header="Similar" results={result.similar} />
+                      }
+                    </Accordion.Body>
+
+                  </Accordion.Item>  
+                ))
+                :
+                <p className="alert alert-dark lead text-center">
+                  <br/><br/>
+                  No results found, keep brewing!
+                  <br/><br/>
+                </p>
           :
           <div className="text-center">
             <Spinner animation="border" variant="dark"/>
           </div>
           }
-
+          </Accordion>
         </Col>
 
         <Col md={2}></Col>
