@@ -4,11 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: './index.js',
+  entry: {
+      main: './index.js',
+  },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].[contenthash:8].js',
+    assetModuleFilename: '[path][name].[hash:8][ext]',
     path:path.resolve(__dirname, "build"),
-    publicPath: '/'
+    publicPath: '/',
+    clean: true
   },
   devServer: {
     static: './build',
@@ -19,10 +23,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "index.html"),
+      favicon: "./static/favicon.ico"
     }),
     new webpack.EnvironmentPlugin(['WORDBREW_API_URL']),
     new MiniCssExtractPlugin({
-        filename: "style.css"
+        filename: "style.[contenthash:8].css"
     })
   ],
   performance: {

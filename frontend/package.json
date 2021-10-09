@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --host 0.0.0.0 --mode development",
-    "build": "webpack --mode production"
+    "start": "webpack serve --host 0.0.0.0 --mode development --stats=minimal",
+    "build": "webpack --mode production --stats=minimal"
   },
   "staticFiles": {
     "staticPath": "static",
