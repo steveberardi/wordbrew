@@ -15,11 +15,7 @@ services:
       context: ./frontend
       target: dev
     ports:
-      - "3000:3000"
+      - "8080:8080"
     volumes:
       - ./frontend:/app:r
-      - node-modules:/app/node_modules
     restart: on-failure
-
-volumes:
-  node-modules:

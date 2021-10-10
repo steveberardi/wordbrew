@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
 
+import WordbrewLogo from './static/images/wordbrew.png';
 
 export const Home = () => {
   return (
@@ -15,7 +16,7 @@ export const Home = () => {
         <Col md={2}></Col>
         <Col>
           <div className="text-center">
-            <img className="img-fluid" src="images/wordbrew.png" style={{ height: "240px" }}/>
+            <img className="img-fluid" src={WordbrewLogo} style={{ height: "240px" }}/>
             <br/><br/>
 
             <h1>WordBrew</h1>
