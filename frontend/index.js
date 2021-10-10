@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 import {
@@ -13,7 +13,6 @@ import { Brew } from './Brew';
 import { Footer } from './Footer';
 
 import './App.scss';
-import './style.css';
 
 function App() {
   return (
