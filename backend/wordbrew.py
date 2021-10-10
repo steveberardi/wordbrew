@@ -5,13 +5,6 @@ wn.config.allow_multithreading = True
 if os.environ.get("WN_DATA_PATH"):
     wn.config.data_directory = os.environ.get("WN_DATA_PATH")
 
-def similar(query):
-    result = []
-    for ss in wn.synsets(query):
-        for w in ss.relations().get("similar") or []:
-            result.extend(w.lemmas())
-
-    return list(set(result))
 
 def brew(query):
     result = []
