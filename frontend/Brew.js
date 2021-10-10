@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
 
 import {
   Link,
@@ -13,14 +12,15 @@ import Container from 'react-bootstrap/Container';
 import Spinner from 'react-bootstrap/Spinner';
 import { Row, Col } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
-
 import { Accordion } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
 
 import WordbrewLogo from './static/images/wordbrew.png';
 
 function useQuery() {
-  return new URLSearchParams(useLocation().search);
+  let params = new URLSearchParams(useLocation().search);
+  let query = params.get("query").toLowerCase();
+  return query;
 }
 
 const ResultColumns = ({header, results}) => {
@@ -41,16 +41,15 @@ const ResultColumns = ({header, results}) => {
 };
 
 export const Brew = () => {
-  const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(true);
 
-  let word = useQuery();
+  let query = useQuery();
 
   useEffect(() => {
     setIsLoaded(false);
-    fetch(`${process.env.WORDBREW_API_URL}/?query=${word.get("query")}`)
+    fetch(`${process.env.WORDBREW_API_URL}/?query=${query}`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -63,7 +62,7 @@ export const Brew = () => {
         }
       )
 
-  }, [word.get("query")]);
+  }, [query]);
 
   return (
     <div>
@@ -86,7 +85,7 @@ export const Brew = () => {
                 className="mr-2"
                 aria-label="Search"
                 name="query"
-                defaultValue={word.get("query")}
+                defaultValue={query}
               />
               <Button variant="primary" type="submit" className="mx-2">Brew</Button>
           </Form>
@@ -104,7 +103,7 @@ export const Brew = () => {
                   <Accordion.Item eventKey={index.toString()} key={index}>
 
                     <Accordion.Header>
-                      <span className="fs-2 fw-bold">{word.get("query")}</span>
+                      <span className="fs-2 fw-bold">{query}</span>
                       <Badge bg="light opacity-50 text-dark mx-2">{result.pos}</Badge>
                       <span className="small lead">{result.definition}</span>
                     </Accordion.Header>
