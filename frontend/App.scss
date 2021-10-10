@@ -1,3 +1,6 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&display=swap');
+
 $primary: rgb(237, 149, 71);
 $secondary: #cec1a5;
 $dark: #684808;
@@ -14,7 +17,9 @@ $theme-colors: (
 $body-color: $dark;
 $body-bg: $light;
 
+// Input Controls
 $input-bg: #faf5eb;
+$input-border-radius: 20px;
 
 $headings-font-weight: 600;
 
@@ -29,27 +34,20 @@ $accordion-button-active-bg: $primary;
 $accordion-button-active-color: $light;
 
 // Buttons
-$btn-border-radius: 10px;
+$btn-border-radius: 12px;
 
 // Badges
 $badge-font-size: 1em;
 
+// Fonts
+$font-family-sans-serif: 'Hind' !default;
+
 @import "~bootstrap/scss/bootstrap";
 
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&display=swap');
-
-body {
-    font-family: 'Hind', sans-serif;
-}
-
+// Extra CSS
 a.navbar-brand {
     font-size: 28px;
     font-weight: 600;
-    color: #543400;
-}
-
-input.form-control {
-    border-radius: 20px;
 }
 
 .badge {

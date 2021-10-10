@@ -1,17 +1,9 @@
 from flask import Flask, request, jsonify
 
-from wordbrew import brew, similar
+from wordbrew import brew
 
 app = Flask(__name__)
 
-
-@app.route("/synonyms", methods=["GET"])
-def get_synonyms():
-    query = request.args.get("query", "")
-    result = similar(query)
-    response = jsonify({"result": result})
-    response.headers.add("Access-Control-Allow-Origin", "*")
-    return response
 
 @app.route("/", methods=["GET"])
 def brew_query():

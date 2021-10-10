@@ -1,9 +1,9 @@
 import React from "react";
 
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
-import { Form, FormControl } from 'react-bootstrap';
+
+import WordbrewLogo from './static/images/wordbrew.png';
 
 export const About = () => {
   return (
@@ -12,7 +12,7 @@ export const About = () => {
       <Row>
         <Col md={2}></Col>
         <Col className="text-center">
-            <img className="img-fluid" src="images/wordbrew.png" style={{ height: "200px" }}/>
+            <img className="img-fluid" src={WordbrewLogo} style={{ height: "200px" }}/>
             <br/><br/>
 
             <h1 className="text-dark">About WordBrew</h1>

@@ -5,29 +5,22 @@ wn.config.allow_multithreading = True
 if os.environ.get("WN_DATA_PATH"):
     wn.config.data_directory = os.environ.get("WN_DATA_PATH")
 
-def similar(query):
-    result = []
-    for ss in wn.synsets(query):
-        for w in ss.relations().get("similar") or []:
-            result.extend(w.lemmas())
-
-    return list(set(result))
 
 def brew(query):
     result = []
     for ss in wn.synsets(query):
 
-        hypernyms = []
+        hypernyms = set()
         for hypernym in ss.hypernyms():
-            hypernyms.extend(hypernym.lemmas())
+            hypernyms.update(hypernym.lemmas())
 
-        hyponyms = []
+        hyponyms = set()
         for hyponym in ss.hyponyms():
-            hyponyms.extend(hyponym.lemmas())
+            hyponyms.update(hyponym.lemmas())
 
-        similar = []
+        similar = set()
         for w in ss.relations().get("similar") or []:
-            similar.extend(w.lemmas())
+            similar.update(w.lemmas())
 
         weight = len(hyponyms) + len(similar)
 
@@ -37,10 +30,10 @@ def brew(query):
                 "pos": ss.pos,
                 "weight": weight,
                 "definition": ss.definition(),
-                "hypernyms": hypernyms,
-                "hyponyms": hyponyms,
+                "hypernyms": list(hypernyms),
+                "hyponyms": list(hyponyms),
                 "lemmas": ss.lemmas(),
-                "similar": similar,
+                "similar": list(similar),
             }
         )
 

@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -11,21 +10,17 @@ import WordbrewLogo from './static/images/wordbrew.png';
 export const Home = () => {
   return (
     <Container>
-      <br/>
       <Row>
         <Col md={2}></Col>
         <Col>
           <div className="text-center">
-            <img className="img-fluid" src={WordbrewLogo} style={{ height: "240px" }}/>
-            <br/><br/>
-
+            <img className="img-fluid my-4" src={WordbrewLogo} style={{ height: "240px" }}/>
+            
             <h1>WordBrew</h1>
             <p className="lead opacity-50">More than a thesaurus. Less than a beer.</p>
           </div>
           
-          <br/>
-
-          <Form className="d-flex w-100" method="get" action="/brew">
+          <Form className="d-flex w-100 mt-4" method="get" action="/brew">
             <FormControl
               type="search"
               placeholder=""
