@@ -6,4 +6,4 @@
 
 1. `make build` to build Docker containers
 2. `make up` to start Docker containers
-3. Visit [http://localhost:3000/](http://localhost:3000/) in a browser to start brewing
+3. Visit [http://localhost:8080/](http://localhost:8080/) in a browser to start brewing
