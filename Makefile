@@ -16,14 +16,14 @@ shell:
 	$(DOCKER_EXEC) python
 
 deploy:
-	gcloud run deploy --source=./backend --port=8000 --region=us-west2 wordbrew-api
+	gcloud builds submit
 
 frontend-prod:
 	docker run --rm -it -v $(shell pwd)/frontend:/app $(shell docker build ./frontend -q --target=prod)
 
 clean:
 	rm -rf backend/__pycache__
-	rm -rf frontend/dist
+	rm -rf frontend/build
 	rm -rf frontend/node_modules
 
 .PHONY: clean
