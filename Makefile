@@ -1,3 +1,6 @@
+PROJECT_ID:=$(shell gcloud config get-value core/project)
+REPO_NAME:=$(shell basename $(CURDIR))
+SHORT_SHA:=$(shell git rev-parse --short head)
 DOCKER_EXEC=docker exec -it wordbrew_backend_1
 
 format:
@@ -16,7 +19,8 @@ shell:
 	$(DOCKER_EXEC) python
 
 deploy:
-	gcloud builds submit
+	$(info Deploying [$(REPO_NAME):$(SHORT_SHA)] to [$(PROJECT_ID)])
+	gcloud builds submit --substitutions REPO_NAME=$(REPO_NAME),SHORT_SHA=$(SHORT_SHA)
 
 frontend-prod:
 	docker run --rm -it -v $(shell pwd)/frontend:/app $(shell docker build ./frontend -q --target=prod)
@@ -26,4 +30,4 @@ clean:
 	rm -rf frontend/build
 	rm -rf frontend/node_modules
 
-.PHONY: clean
+.PHONY: clean deploy
