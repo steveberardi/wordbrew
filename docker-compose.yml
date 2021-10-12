@@ -4,11 +4,12 @@ services:
   backend:
     build:
       context: ./backend
-      target: base
+      target: dev
     ports:
       - "8000:8000"
     volumes:
       - ./backend:/app:r
+    container_name: wordbrew_backend
   
   frontend:
     build: 
