@@ -1,4 +1,14 @@
+import pytest
+
 from wordbrew import brew
+from server import app
+
+
+@pytest.fixture
+def client():
+    app.config["TESTING"] = True
+    with app.test_client() as client:
+        yield client
 
 
 def test_brew_with_real_word():
@@ -23,8 +33,9 @@ def test_brew_with_fake_word():
     assert brew("foobar") == []
 
 
-def test_server_valid_query():
-    pass
+def test_server_valid_query(client):
+    resp = client.get("/?query=walk")
+    assert resp.status_code == 200
 
 
 def test_server_bad_query():
