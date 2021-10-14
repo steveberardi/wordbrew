@@ -1,3 +1,4 @@
+import json
 import pytest
 
 from wordbrew import brew
@@ -35,8 +36,13 @@ def test_brew_with_fake_word():
 
 def test_server_valid_query(client):
     resp = client.get("/?query=walk")
+    resp_data = json.loads(resp.data)
     assert resp.status_code == 200
+    assert len(resp_data["result"]) > 0
 
 
-def test_server_bad_query():
-    pass
+def test_server_bad_query(client):
+    resp = client.get("/?query=foobar")
+    resp_data = json.loads(resp.data)
+    assert resp.status_code == 200
+    assert len(resp_data["result"]) == 0
