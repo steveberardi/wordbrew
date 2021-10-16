@@ -39,11 +39,8 @@ def brew(query):
 
     # sort by amount of data and remove low weight results
     return list(
-        filter(lambda d: d['weight'] > 1,
-            sorted(
-                result,
-                key=lambda k: k['weight'],
-                reverse=True
-            )
+        filter(
+            lambda d: d["weight"] > 1,
+            sorted(result, key=lambda k: k["weight"], reverse=True),
         )
     )
