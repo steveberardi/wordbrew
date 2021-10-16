@@ -18,6 +18,6 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./frontend:/app:r
+      - ./frontend/src:/app/src:r
     restart: on-failure
     container_name: wordbrew_frontend

@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
-      main: './index.js',
+      main: './src/index.js',
   },
   output: {
     filename: '[name].[contenthash:8].js',
@@ -22,8 +22,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "index.html"),
-      favicon: "./static/favicon.ico"
+      template: path.join(__dirname, "src", "index.html"),
+      favicon: "./images/favicon.ico"
     }),
     new webpack.EnvironmentPlugin(['WORDBREW_API_URL']),
     new MiniCssExtractPlugin({

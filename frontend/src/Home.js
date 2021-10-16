@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import { Form, FormControl } from 'react-bootstrap';
 
-import WordbrewLogo from './static/images/wordbrew.png';
+import WordbrewLogo from '../images/wordbrew.png';
 
 export const Home = () => {
   return (
