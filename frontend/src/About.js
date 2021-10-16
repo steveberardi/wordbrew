@@ -3,7 +3,7 @@ import React from "react";
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 
-import WordbrewLogo from './static/images/wordbrew.png';
+import WordbrewLogo from '../images/wordbrew.png';
 
 export const About = () => {
   return (
