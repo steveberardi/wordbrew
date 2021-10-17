@@ -1,8 +1,8 @@
 import json
 import pytest
 
-from .wordbrew import brew
-from .server import app
+from wordbrew import brew
+from server import app
 
 
 @pytest.fixture

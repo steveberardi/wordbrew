@@ -2,16 +2,16 @@ PROJECT_ID:=$(shell gcloud config get-value core/project)
 REPO_NAME:=$(shell basename $(CURDIR))
 SHORT_SHA:=$(shell git rev-parse --short head)
 DOCKER_EXEC=docker exec -it wordbrew_backend_1
-DOCKER_RUN=docker run wordbrew_backend bash -c
+DOCKER_RUN=docker run -v $(shell pwd)/backend/src:/app/src wordbrew_backend bash -c
 
 format:
-	$(DOCKER_RUN) "black /app"
+	$(DOCKER_RUN) "black /app/src"
 
 lint:
-	$(DOCKER_RUN) "flake8 /app"
+	$(DOCKER_RUN) "flake8 /app/src"
 
 test:
-	$(DOCKER_RUN) "pytest --cov=/app --cov-report=term --cov-report=html /app"
+	$(DOCKER_RUN) "pytest --cov=/app/src --cov-report=term --cov-report=html /app/src"
 
 build:
 	docker compose build

@@ -15,8 +15,8 @@ RUN tar -xvzf data/wndb.tar.gz -C $WN_DATA_PATH
 
 FROM base as dev
 RUN pip install -r requirements-dev.txt
-CMD exec gunicorn --reload --bind :8000 --workers 1 --threads 4 --timeout 0 src.server:app
+CMD exec gunicorn --reload --bind :8000 --workers 1 --threads 4 --timeout 0 --chdir /app/src server:app
 
 
 FROM base as prod
-CMD exec gunicorn --bind :8000 --workers 1 --threads 8 --timeout 0 src.server:app
+CMD exec gunicorn --bind :8000 --workers 1 --threads 8 --timeout 0 --chdir /app/src server:app

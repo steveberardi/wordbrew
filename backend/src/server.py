@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 
-from .wordbrew import brew
+from wordbrew import brew
 
 app = Flask(__name__)
 
