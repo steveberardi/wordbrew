@@ -20,7 +20,7 @@ export const Home = () => {
             <p className="lead opacity-50">More than a thesaurus. Less than a beer.</p>
           </div>
           
-          <Form className="d-flex w-100 mt-4" method="get" action="/brew">
+          <Form className="d-flex w-100 mt-4" method="get" action="/brew/">
             <FormControl
               type="search"
               placeholder=""
