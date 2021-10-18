@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --host 0.0.0.0 --mode development --stats=minimal",
-    "build": "webpack --mode production --stats=minimal",
-    "postbuild": "react-snap"
+    "build": "webpack --mode production --stats=minimal"
   },
   "staticFiles": {
     "staticPath": "static",
@@ -22,10 +21,7 @@
   "bugs": {
     "url": "https://github.com/steveberardi/wordbrew/issues"
   },
-  "homepage": "/",
-  "reactSnap": {
-    "include": ["/", "/brew"]
-  },
+  "homepage": "https://wordbrew.io",
   "dependencies": {
     "@popperjs/core": "^2.9.3",
     "bootstrap": "^5.1.0",
@@ -45,7 +41,6 @@
     "mini-css-extract-plugin": "^2.4.2",
     "postcss": "^8.3.9",
     "postcss-loader": "^6.1.1",
-    "react-snap": "^1.23.0",
     "sass": "^1.42.1",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
