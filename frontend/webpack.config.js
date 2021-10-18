@@ -3,6 +3,14 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const PRE_RENDER_ROUTES = ['brew']
+const routeHtmlPlugins = PRE_RENDER_ROUTES.map(name => {
+  return new HtmlWebpackPlugin({
+    template: path.join(__dirname, "src", "index.html"),
+    filename: `${name}/index.html`
+  })
+});
+
 module.exports = {
   entry: {
       main: './src/index.js',
@@ -25,6 +33,7 @@ module.exports = {
       template: path.join(__dirname, "src", "index.html"),
       favicon: "./images/favicon.ico"
     }),
+    ...routeHtmlPlugins,
     new webpack.EnvironmentPlugin(['WORDBREW_API_URL']),
     new MiniCssExtractPlugin({
         filename: "style.[contenthash:8].css"
