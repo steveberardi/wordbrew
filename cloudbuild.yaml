@@ -50,7 +50,7 @@ steps:
 # Frontend / Set no cache on index.html
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: gsutil
-  args: ['setmeta', '-h', 'Cache-Control:no-store', 'gs://${_BUCKET_NAME}/*.html']
+  args: ['setmeta', '-h', 'Cache-Control:no-store', 'gs://${_BUCKET_NAME}/**.html']
 
 substitutions:
     _WORDBREW_API_URL: https://wordbrew-api-q35ri6rwla-wl.a.run.app
