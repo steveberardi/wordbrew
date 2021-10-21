@@ -15,8 +15,8 @@ import WordbrewLogo from '../images/wordbrew.png';
 
 function useQuery() {
   let params = new URLSearchParams(useLocation().search);
-  let query = params.get("query");
-  return query ? query.toLowerCase() : null;
+  let query = params.get("query") || "";
+  return query.toLowerCase();
 }
 
 const ResultColumns = ({header, results}) => {
