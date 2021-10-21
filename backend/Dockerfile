@@ -1,4 +1,4 @@
-FROM python:3.8.5-slim as base
+FROM python:3.9.4-slim as base
 
 EXPOSE 8000
 

@@ -7,8 +7,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def brew_query():
-    query = request.args.get("query", "")
-    result = brew(query)
+    query = request.args.get("query")
+    result = brew(query) if query else []
     response = jsonify({"result": result})
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response

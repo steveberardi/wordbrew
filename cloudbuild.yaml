@@ -2,30 +2,37 @@ steps:
 # --- Backend ---
 # Build Docker container
 - name: 'gcr.io/cloud-builders/docker'
+  id: 'build-backend'
   args: ['build', '-t', 
           'gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA', './backend',
           '--target=prod']
 
 # Docker push to Google Artifact Registry
 - name: 'gcr.io/cloud-builders/docker'
+  id: 'push-backend'
   args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA']
 
 # Deploy to Cloud Run
 - name: google/cloud-sdk
+  id: 'deploy-backend'
   args: ['gcloud', 'run', 'deploy', 'wordbrew-api', 
           '--image=gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA',
           '--region', 'us-west2', '--platform', 'managed', 
           '--allow-unauthenticated', '--port', '8000']
+  waitFor: ['build-frontend']
 
 # --- Frontend ---
 # Install dependencies
 - name: node:16.10
+  id: 'init-frontend'
   entrypoint: npm
   args: ['install']
   dir: 'frontend/'
+  waitFor: ['-']
 
 # Build
 - name: node:16.10
+  id: 'build-frontend'
   entrypoint: npm
   args: ['run', 'build']
   env:
@@ -36,11 +43,12 @@ steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: gsutil
   args: ['-m', 'rsync', '-r', '-d', './frontend/build', 'gs://${_BUCKET_NAME}']
+  waitFor: ['deploy-backend']
 
 # Set no cache on index.html
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: gsutil
-  args: ['setmeta', '-h', 'Cache-Control:no-store', 'gs://${_BUCKET_NAME}/index.html']
+  args: ['setmeta', '-h', 'Cache-Control:no-store', 'gs://${_BUCKET_NAME}/*.html']
 
 substitutions:
     _WORDBREW_API_URL: https://wordbrew-api-q35ri6rwla-wl.a.run.app
