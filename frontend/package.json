@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --host 0.0.0.0 --mode development --stats=minimal",
-    "build": "webpack --mode production --stats=minimal"
+    "build": "webpack --mode production --stats=minimal",
+    "postbuild": "purgecss --css build/*.css --content build/index.html build/*.js --output build/style.css"
   },
   "staticFiles": {
     "staticPath": "static",
@@ -41,6 +42,7 @@
     "mini-css-extract-plugin": "^2.4.2",
     "postcss": "^8.3.9",
     "postcss-loader": "^6.1.1",
+    "purgecss": "^4.0.3",
     "sass": "^1.42.1",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
