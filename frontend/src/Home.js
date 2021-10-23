@@ -14,7 +14,7 @@ export const Home = () => {
         <Col md={2}></Col>
         <Col>
           <div className="text-center">
-            <img className="img-fluid my-4" src={WordbrewLogo} style={{ height: "240px" }}/>
+            <img className="img-fluid my-4" src={WordbrewLogo} style={{ height: "240px" }} alt="WordBrew Logo"/>
             
             <h1>WordBrew</h1>
             <p className="lead opacity-50">More than a thesaurus. Less than a beer.</p>

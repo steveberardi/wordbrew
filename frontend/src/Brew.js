@@ -71,6 +71,7 @@ export const Brew = () => {
               width="32"
               height="32"
               className="d-inline-block align-top"
+              alt="WordBrew Logo"
             />{' '}
           WordBrew
           </Navbar.Brand>
