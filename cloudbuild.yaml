@@ -41,11 +41,16 @@ steps:
           '--allow-unauthenticated', '--port', '8000']
   waitFor: ['push-backend', 'build-frontend']
 
-# Frontend / Sync to storage bucket
+# Frontend / Copy to storage bucket with gzip
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: gsutil
-  args: ['-m', 'rsync', '-r', '-d', './frontend/build', 'gs://${_BUCKET_NAME}']
+  args: ['-m', 'cp', '-r', '-z css,js', './frontend/build', 'gs://${_BUCKET_NAME}']
   waitFor: ['deploy-backend']
+
+# Frontend / Remove any files that no longer exist in build
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: gsutil
+  args: ['-m', 'rsync', '-r', '-i', '-d', './frontend/build', 'gs://${_BUCKET_NAME}']
 
 # Frontend / Set no cache on index.html
 - name: 'gcr.io/cloud-builders/gcloud'
