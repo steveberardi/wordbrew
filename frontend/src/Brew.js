@@ -68,7 +68,7 @@ export const Brew = () => {
             <img
               alt="logo"
               src={WordbrewLogo}
-              width="32"
+              width="25"
               height="32"
               className="d-inline-block align-top"
               alt="WordBrew Logo"
