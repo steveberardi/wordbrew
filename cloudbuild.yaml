@@ -52,7 +52,12 @@ steps:
   entrypoint: gsutil
   args: ['-m', 'rsync', '-r', '-i', '-d', './frontend/build', 'gs://${_BUCKET_NAME}']
 
-# Frontend / Set no cache on index.html
+# Frontend / Set cache to 1yr on all files
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: gsutil
+  args: ['setmeta', '-h', 'Cache-Control:max-age=31536000', 'gs://${_BUCKET_NAME}/**']
+
+# Frontend / Set no cache on html files
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: gsutil
   args: ['setmeta', '-h', 'Cache-Control:no-store', 'gs://${_BUCKET_NAME}/**.html']
