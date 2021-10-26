@@ -44,7 +44,7 @@ steps:
 # Frontend / Copy to storage bucket with gzip
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: gsutil
-  args: ['-m', 'cp', '-r', '-z css,js', './frontend/build', 'gs://${_BUCKET_NAME}']
+  args: ['-m', 'cp', '-r', '-z', 'css,js', './frontend/build/**', 'gs://${_BUCKET_NAME}']
   waitFor: ['deploy-backend']
 
 # Frontend / Remove any files that no longer exist in build
