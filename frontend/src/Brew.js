@@ -11,7 +11,7 @@ import { Form, FormControl } from 'react-bootstrap';
 import { Accordion } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
 
-import WordbrewLogo from '../images/wordbrew.png';
+import WordbrewLogo from '../images/wordbrew-small.png';
 
 function useQuery() {
   let params = new URLSearchParams(useLocation().search);
