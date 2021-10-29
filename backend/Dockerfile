@@ -4,16 +4,19 @@ EXPOSE 8000
 
 WORKDIR /app
 
-COPY . .
-
+ADD requirements.txt .
 RUN pip install -r requirements.txt
 
-# Extract WordNet database
+# Add WordNet data
+ADD ./data/wndb.tar.gz /app/data
 ENV WN_DATA_PATH="/app/data"
-RUN tar -xvzf data/wndb.tar.gz -C $WN_DATA_PATH
+
+# Copy source code
+COPY ./src /app/src
 
 # Development Base
 FROM base as devbase
+ADD requirements-dev.txt .
 RUN pip install -r requirements-dev.txt
 
 # Lint, Format, Tests
