@@ -11,6 +11,7 @@ import { Form, FormControl } from 'react-bootstrap';
 import { Accordion } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
 
+import { Footer } from './Footer';
 import WordbrewLogo from '../images/wordbrew-small.png';
 
 function useQuery() {
@@ -129,7 +130,7 @@ export const Brew = () => {
                   <br/><br/>
                 </p>
           :
-          <div className="text-center">
+          <div className="text-center py-4">
             <Spinner animation="border" variant="dark"/>
           </div>
           }
@@ -139,6 +140,7 @@ export const Brew = () => {
         <Col md={2}></Col>
       </Row>
 
+      { isLoaded && <Footer /> }
     </div>
   );
 }

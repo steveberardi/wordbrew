@@ -2,9 +2,11 @@ FROM node:16.10-buster-slim as base
 
 WORKDIR /app
 
-COPY . .
-
+COPY package*.json .babelrc webpack.config.js /app
 RUN npm install
+
+COPY ./src /app/src
+COPY ./images /app/images
 
 # Dev
 FROM base as dev
