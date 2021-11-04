@@ -1,0 +1,28 @@
+steps:
+
+# Backend / Build Docker container
+- name: 'gcr.io/cloud-builders/docker'
+  id: 'test-build-backend'
+  args: ['build', '-t', 
+          'gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA', './backend',
+          '--target=test']
+
+# Frontend / Install dependencies
+- name: node:16.10
+  id: 'init-frontend'
+  entrypoint: npm
+  args: ['install']
+  dir: 'frontend/'
+  waitFor: ['-']
+
+# Frontend / Build
+- name: node:16.10
+  id: 'build-frontend'
+  entrypoint: npm
+  args: ['run', 'build']
+  env:
+  - 'WORDBREW_API_URL=${_WORDBREW_API_URL}'
+  dir: 'frontend/'
+
+substitutions:
+    _WORDBREW_API_URL: https://wordbrew-api-q35ri6rwla-wl.a.run.app
