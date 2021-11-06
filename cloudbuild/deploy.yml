@@ -46,7 +46,7 @@ steps:
   id: 'frontend-deploy'
   entrypoint: gsutil
   args: ['-m', 'cp', '-r', '-z', 'css,js', './frontend/build/*', 'gs://${_BUCKET_NAME}']
-  waitFor: ['deploy-backend']
+  waitFor: ['backend-deploy']
 
 # Frontend / Remove any files that no longer exist in build
 - name: 'gcr.io/cloud-builders/gcloud'
