@@ -25,9 +25,13 @@ shell:
 bash:
 	$(DOCKER_EXEC) bash
 
-deploy:
-	$(info Deploying [$(REPO_NAME):$(SHORT_SHA)] to [$(PROJECT_ID)])
-	gcloud builds submit --substitutions REPO_NAME=$(REPO_NAME),SHORT_SHA=$(SHORT_SHA)
+gcp-test:
+	$(info Running GCP Test Build [$(REPO_NAME):$(SHORT_SHA)] to [$(PROJECT_ID)])
+	gcloud builds submit --substitutions REPO_NAME=$(REPO_NAME),SHORT_SHA=$(SHORT_SHA) --config=./cloudbuild/test.yml
+
+gcp-deploy:
+	$(info Running GCP Deploy Build [$(REPO_NAME):$(SHORT_SHA)] to [$(PROJECT_ID)])
+	gcloud builds submit --substitutions REPO_NAME=$(REPO_NAME),SHORT_SHA=$(SHORT_SHA) --config=./cloudbuild/deploy.yml
 
 frontend-prod:
 	docker run --rm -it -v $(shell pwd)/frontend:/app $(shell docker build ./frontend -q --target=prod)
