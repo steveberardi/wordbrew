@@ -1,8 +1,8 @@
 steps:
 
 # Backend / Build Docker container
-- name: 'gcr.io/cloud-builders/docker'
-  id: 'test-build-backend'
+- name: docker:20.10
+  id: 'backend-build-and-test'
   args: ['build', '-t', 
           'gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA', './backend',
           '--target=test']
