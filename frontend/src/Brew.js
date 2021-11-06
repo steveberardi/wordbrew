@@ -126,7 +126,10 @@ export const Brew = () => {
                 :
                 <p className="alert alert-dark lead text-center">
                   <br/><br/>
-                  No results found, keep brewing!
+                  <img height="64" width="64" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xMiAwYzYuNjIzIDAgMTIgNS4zNzcgMTIgMTJzLTUuMzc3IDEyLTEyIDEyLTEyLTUuMzc3LTEyLTEyIDUuMzc3LTEyIDEyLTEyem0wIDFjNi4wNzEgMCAxMSA0LjkyOSAxMSAxMXMtNC45MjkgMTEtMTEgMTEtMTEtNC45MjktMTEtMTEgNC45MjktMTEgMTEtMTF6bS0uMDE5IDE0YzEuODQyLjAwNSAzLjYxMy43OTEgNS4xMTcgMi4yMjRsLS42NjMuNzQ4Yy0xLjMyMy0xLjI3LTIuODY2LTEuOTY4LTQuNDU2LTEuOTcyaC0uMDEzYy0xLjU2OCAwLTMuMDkyLjY3Ny00LjQgMS45MTRsLS42NjQtLjc0OGMxLjQ5MS0xLjQgMy4yNDMtMi4xNjYgNS4wNjQtMi4xNjZoLjAxNXptLTMuNDk0LTYuNWMuNTUyIDAgMSAuNDQ4IDEgMXMtLjQ0OCAxLTEgMS0xLS40NDgtMS0xIC40NDgtMSAxLTF6bTcuMDEzIDBjLjU1MiAwIDEgLjQ0OCAxIDFzLS40NDggMS0xIDEtMS0uNDQ4LTEtMSAuNDQ4LTEgMS0xeiIvPjwvc3ZnPg=="/>
+                  <br/><br/>
+                  
+                  <p>No results found, keep brewing!</p>
                   <br/><br/>
                 </p>
           :
