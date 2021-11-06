@@ -1,7 +1,7 @@
 // Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&display=swap');
 
-$primary: rgb(237, 149, 71);
+$primary: #ed9547;
 $secondary: #cec1a5;
 $dark: #684808;
 $medium: #754f02;
@@ -53,3 +53,67 @@ a.navbar-brand {
 .badge {
     margin: 2px;
 }
+
+/*
+    Animations
+*/
+
+.vibrate {
+	-webkit-animation: vibrate 0.3s linear infinite both;
+	        animation: vibrate 0.3s linear infinite both;
+}
+
+ @-webkit-keyframes vibrate {
+    0% {
+      -webkit-transform: translate(0);
+              transform: translate(0);
+    }
+    20% {
+      -webkit-transform: translate(-2px, 2px);
+              transform: translate(-2px, 2px);
+    }
+    40% {
+      -webkit-transform: translate(-2px, -2px);
+              transform: translate(-2px, -2px);
+    }
+    60% {
+      -webkit-transform: translate(2px, 2px);
+              transform: translate(2px, 2px);
+    }
+    80% {
+      -webkit-transform: translate(2px, -2px);
+              transform: translate(2px, -2px);
+    }
+    100% {
+      -webkit-transform: translate(0);
+              transform: translate(0);
+    }
+  }
+  @keyframes vibrate {
+    0% {
+      -webkit-transform: translate(0);
+              transform: translate(0);
+    }
+    20% {
+      -webkit-transform: translate(-2px, 2px);
+              transform: translate(-2px, 2px);
+    }
+    40% {
+      -webkit-transform: translate(-2px, -2px);
+              transform: translate(-2px, -2px);
+    }
+    60% {
+      -webkit-transform: translate(2px, 2px);
+              transform: translate(2px, 2px);
+    }
+    80% {
+      -webkit-transform: translate(2px, -2px);
+              transform: translate(2px, -2px);
+    }
+    100% {
+      -webkit-transform: translate(0);
+              transform: translate(0);
+    }
+  }
+
+  
