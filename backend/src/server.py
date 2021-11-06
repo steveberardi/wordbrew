@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 
 from wordbrew import brew
-
+import time
 app = Flask(__name__)
 
 
@@ -11,6 +11,7 @@ def brew_query():
     result = brew(query) if query else []
     response = jsonify({"result": result})
     response.headers.add("Access-Control-Allow-Origin", "*")
+    time.sleep(1)
     return response
 
 

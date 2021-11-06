@@ -13,6 +13,7 @@ import { Badge } from 'react-bootstrap';
 
 import { Footer } from './Footer';
 import WordbrewLogo from '../images/wordbrew-small.png';
+import BrewingSVG from '../images/wordbrew-loading.svg';
 
 function useQuery() {
   let params = new URLSearchParams(useLocation().search);
@@ -67,7 +68,6 @@ export const Brew = () => {
         <Container>
           <Navbar.Brand href="/" className="text-dark">
             <img
-              alt="logo"
               src={WordbrewLogo}
               width="25"
               height="32"
@@ -133,8 +133,13 @@ export const Brew = () => {
                   <br/><br/>
                 </p>
           :
-          <div className="text-center py-4">
-            <Spinner animation="border" variant="dark"/>
+          <div className="text-center m-4 opacity-75 vh-100 vibrate">
+            <img
+              alt="Brewing..."
+              src={BrewingSVG}
+              height="128"
+              width="128"
+            />
           </div>
           }
           </Accordion>
