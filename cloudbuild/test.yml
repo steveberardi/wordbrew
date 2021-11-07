@@ -6,6 +6,8 @@ steps:
   args: ['build', '-t', 
           'gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA', './backend',
           '--target=test']
+  env:
+  - 'DOCKER_BUILDKIT=1'
 
 # Frontend / Install dependencies
 - name: node:16.10
