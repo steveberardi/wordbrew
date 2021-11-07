@@ -28,7 +28,7 @@ export const Home = () => {
               aria-label="Search"
               name="query"
             />
-            <Button variant="primary" type="submit" className="mx-2">Brew</Button>
+            <Button type="submit" className="btn-primary mx-2">Brew</Button>
           </Form>
         </Col>
         <Col md={2}></Col>

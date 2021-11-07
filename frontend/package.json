@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --host 0.0.0.0 --mode development --stats=minimal",
-    "build": "webpack --mode production --stats=minimal"
+    "build": "webpack --mode production --stats=minimal",
+    "postbuild": "purgecss --config ./purgecss.config.js"
   },
   "staticFiles": {
     "staticPath": "static",
@@ -34,13 +35,11 @@
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
-    "autoprefixer": "^10.3.7",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.1.0",
-    "html-webpack-plugin": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.2",
-    "postcss": "^8.3.9",
-    "postcss-loader": "^6.1.1",
+    "purgecss": "^4.0.3",
     "sass": "^1.42.1",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
