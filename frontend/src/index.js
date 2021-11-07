@@ -21,7 +21,6 @@ function App() {
 
         <Route path="/brew">
           <Brew />
-          <Footer />
         </Route>
         
         <Route path="/about">
