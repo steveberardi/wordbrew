@@ -26,11 +26,11 @@ bash:
 	$(DOCKER_EXEC) bash
 
 gcp-test:
-	$(info Running GCP Test Build [$(REPO_NAME):$(SHORT_SHA)] to [$(PROJECT_ID)])
+	$(info Running GCP Test Build [$(REPO_NAME):$(SHORT_SHA)] in [$(PROJECT_ID)])
 	gcloud builds submit --substitutions REPO_NAME=$(REPO_NAME),SHORT_SHA=$(SHORT_SHA) --config=./cloudbuild/test.yml
 
 gcp-deploy:
-	$(info Running GCP Deploy Build [$(REPO_NAME):$(SHORT_SHA)] to [$(PROJECT_ID)])
+	$(info Running GCP Deploy Build [$(REPO_NAME):$(SHORT_SHA)] in [$(PROJECT_ID)])
 	gcloud builds submit --substitutions REPO_NAME=$(REPO_NAME),SHORT_SHA=$(SHORT_SHA) --config=./cloudbuild/deploy.yml
 
 frontend-prod:
