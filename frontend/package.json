@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --host 0.0.0.0 --mode development --stats=minimal",
     "build": "webpack --mode production --stats=minimal",
-    "postbuild": "purgecss --css build/*.css --content build/index.html build/*.js --output build/style.css"
+    "postbuild": "purgecss --config ./purgecss.config.js",
   },
   "staticFiles": {
     "staticPath": "static",
