@@ -89,65 +89,70 @@ export const Brew = () => {
         </Container>
       </Navbar>
 
-      <Row className="bg-white py-lg-5">
-        <Col md={2}></Col>
-        
-        <Col className="justify-content-center">
-          <Accordion defaultActiveKey="0">
-          { isLoaded ? 
-              results.length > 0 ?
-                results.map( (result, index) => (
-                  <Accordion.Item eventKey={index.toString()} key={index}>
+      <div className="bg-white">
 
-                    <Accordion.Header>
-                      <span className="fs-2 fw-bold">{query}</span>
-                      <Badge bg="light opacity-50 text-dark mx-2">{result.pos}</Badge>
-                      <span className="small lead">{result.definition}</span>
-                    </Accordion.Header>
+        { isLoaded ?
+        <div>
+          <Row className="py-lg-5">
+            <Col md={2}></Col>
+            
+            <Col className="justify-content-center">
+              <Accordion defaultActiveKey="0">
+                {results.length > 0 ?
+                  results.map( (result, index) => (
+                    <Accordion.Item eventKey={index.toString()} key={index}>
 
-                    <Accordion.Body>
-                      {
-                        result.hyponyms.length > 0 && 
-                        <ResultColumns header="More Specific" results={result.hyponyms} />  
-                      }
-                      {
-                        result.hypernyms.length > 0 &&
-                        <ResultColumns header="Less Specific" results={result.hypernyms} />
-                      }
-                      { 
-                        result.similar.length > 0 &&
-                        <ResultColumns header="Similar" results={result.similar} />
-                      }
-                    </Accordion.Body>
+                      <Accordion.Header>
+                        <span className="fs-2 fw-bold">{query}</span>
+                        <Badge bg="light opacity-50 text-dark mx-2">{result.pos}</Badge>
+                        <span className="small lead">{result.definition}</span>
+                      </Accordion.Header>
 
-                  </Accordion.Item>  
-                ))
-                :
-                <p className="alert alert-dark lead text-center">
-                  <br/><br/>
-                  <img height="64" width="64" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xMiAwYzYuNjIzIDAgMTIgNS4zNzcgMTIgMTJzLTUuMzc3IDEyLTEyIDEyLTEyLTUuMzc3LTEyLTEyIDUuMzc3LTEyIDEyLTEyem0wIDFjNi4wNzEgMCAxMSA0LjkyOSAxMSAxMXMtNC45MjkgMTEtMTEgMTEtMTEtNC45MjktMTEtMTEgNC45MjktMTEgMTEtMTF6bS0uMDE5IDE0YzEuODQyLjAwNSAzLjYxMy43OTEgNS4xMTcgMi4yMjRsLS42NjMuNzQ4Yy0xLjMyMy0xLjI3LTIuODY2LTEuOTY4LTQuNDU2LTEuOTcyaC0uMDEzYy0xLjU2OCAwLTMuMDkyLjY3Ny00LjQgMS45MTRsLS42NjQtLjc0OGMxLjQ5MS0xLjQgMy4yNDMtMi4xNjYgNS4wNjQtMi4xNjZoLjAxNXptLTMuNDk0LTYuNWMuNTUyIDAgMSAuNDQ4IDEgMXMtLjQ0OCAxLTEgMS0xLS40NDgtMS0xIC40NDgtMSAxLTF6bTcuMDEzIDBjLjU1MiAwIDEgLjQ0OCAxIDFzLS40NDggMS0xIDEtMS0uNDQ4LTEtMSAuNDQ4LTEgMS0xeiIvPjwvc3ZnPg=="/>
-                  <br/><br/>
-                  
-                  <p>No results found, keep brewing!</p>
-                  <br/><br/>
-                </p>
-          :
-          <div className="text-center m-4 opacity-75 vh-100 vibrate">
-            <img
-              alt="Brewing..."
-              src={BrewingSVG}
-              height="128"
-              width="128"
-            />
-          </div>
-          }
-          </Accordion>
-        </Col>
+                      <Accordion.Body>
+                        {
+                          result.hyponyms.length > 0 && 
+                          <ResultColumns header="More Specific" results={result.hyponyms} />  
+                        }
+                        {
+                          result.hypernyms.length > 0 &&
+                          <ResultColumns header="Less Specific" results={result.hypernyms} />
+                        }
+                        { 
+                          result.similar.length > 0 &&
+                          <ResultColumns header="Similar" results={result.similar} />
+                        }
+                      </Accordion.Body>
 
-        <Col md={2}></Col>
-      </Row>
+                    </Accordion.Item>  
+                  ))
+                  :
+                  <p className="alert alert-dark lead text-center">
+                    <br/><br/>
+                    <img height="64" width="64" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xMiAwYzYuNjIzIDAgMTIgNS4zNzcgMTIgMTJzLTUuMzc3IDEyLTEyIDEyLTEyLTUuMzc3LTEyLTEyIDUuMzc3LTEyIDEyLTEyem0wIDFjNi4wNzEgMCAxMSA0LjkyOSAxMSAxMXMtNC45MjkgMTEtMTEgMTEtMTEtNC45MjktMTEtMTEgNC45MjktMTEgMTEtMTF6bS0uMDE5IDE0YzEuODQyLjAwNSAzLjYxMy43OTEgNS4xMTcgMi4yMjRsLS42NjMuNzQ4Yy0xLjMyMy0xLjI3LTIuODY2LTEuOTY4LTQuNDU2LTEuOTcyaC0uMDEzYy0xLjU2OCAwLTMuMDkyLjY3Ny00LjQgMS45MTRsLS42NjQtLjc0OGMxLjQ5MS0xLjQgMy4yNDMtMi4xNjYgNS4wNjQtMi4xNjZoLjAxNXptLTMuNDk0LTYuNWMuNTUyIDAgMSAuNDQ4IDEgMXMtLjQ0OCAxLTEgMS0xLS40NDgtMS0xIC40NDgtMSAxLTF6bTcuMDEzIDBjLjU1MiAwIDEgLjQ0OCAxIDFzLS40NDggMS0xIDEtMS0uNDQ4LTEtMSAuNDQ4LTEgMS0xeiIvPjwvc3ZnPg=="/>
+                    <br/><br/>
+                    
+                    <p>No results found, keep brewing!</p>
+                    <br/><br/>
+                  </p>
+                }
+              </Accordion>
+            </Col>
 
-      { isLoaded && <Footer /> }
+            <Col md={2}></Col>
+          </Row>
+          <Footer />
+        </div>
+        :
+        <div className="text-center pt-5 opacity-75 vh-100 vibrate">
+          <img
+            alt="Brewing..."
+            src={BrewingSVG}
+            height="128"
+            width="128"
+          />
+        </div>
+        }
+      </div>
     </div>
   );
 }
