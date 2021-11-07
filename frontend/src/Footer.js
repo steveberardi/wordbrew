@@ -7,7 +7,7 @@ import { Row, Col } from 'react-bootstrap';
 export const Footer = () => {
 
     return (
-        <footer className="py-5 mt-2 bg-light bg-opacity-50">
+        <footer className="py-5 bg-light">
             <Container>
                 <Row>
                     <Col md={6}>
