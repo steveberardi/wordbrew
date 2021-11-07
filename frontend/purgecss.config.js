@@ -15,7 +15,7 @@
 
         4. Create plugin/script that automatically finds used classes?
 
-        
+
     References:
         https://stackoverflow.com/questions/63865512/react-bootstrap-purgecss-next-js
         
@@ -28,15 +28,16 @@
 module.exports = {
     content: [
         'build/**/*.html',
-        'build/*.js',
-        'node_modules/react-bootstrap/**/*.js',
-        'node_modules/bootstrap/**/*.js'
+        'build/*.js'
     ],
     css: ['build/*.css'],
     output: "build/",
-    safelist: [
-        "btn-primary",
-        "accordion",
-        "bg-dark"
-    ]
+    safelist: {
+        standard: [
+            /^btn.*/,
+            /^col.*/,
+            /^bg.*/,
+            /^navbar.*/,
+        ],
+    }
   }
