@@ -15,6 +15,14 @@
 
         4. Create plugin/script that automatically finds used classes?
 
+        
+    References:
+        https://stackoverflow.com/questions/63865512/react-bootstrap-purgecss-next-js
+        
+        https://stackoverflow.com/questions/62279045/purgecss-with-react-bootstrap-possible
+
+        https://github.com/Developmint/nuxt-purgecss/issues/14
+
 */
 
 module.exports = {
