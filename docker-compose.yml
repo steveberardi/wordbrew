@@ -20,4 +20,5 @@ services:
     volumes:
       - ./frontend/src:/app/src:r
     restart: on-failure
+    init: true
     container_name: wordbrew_frontend

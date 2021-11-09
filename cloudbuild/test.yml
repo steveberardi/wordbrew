@@ -25,6 +25,7 @@ steps:
   env:
   - 'WORDBREW_API_URL=${_WORDBREW_API_URL}'
   dir: 'frontend/'
+  waitFor: ['frontend-init']
 
 substitutions:
     _WORDBREW_API_URL: https://wordbrew-api-q35ri6rwla-wl.a.run.app
