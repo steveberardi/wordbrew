@@ -8,9 +8,7 @@ import {
 } from "react-router-dom";
 
 import { Home } from './Home';
-import { About } from './About';
 import { Brew } from './Brew';
-import { Footer } from './Footer';
 
 import './App.scss';
 
@@ -21,11 +19,6 @@ function App() {
 
         <Route path="/brew">
           <Brew />
-        </Route>
-        
-        <Route path="/about">
-          <About />
-          <Footer />
         </Route>
 
         <Route path="/">
