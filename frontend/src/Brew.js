@@ -11,8 +11,8 @@ import { Accordion } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
 
 import { Footer } from './Footer';
-import WordbrewLogo from '../images/wordbrew-small.png';
-import BrewingSVG from '../images/wordbrew-loading.svg';
+import WordbrewLogo from '../images/logo.svg';
+import BrewingSVG from '../images/loading.svg';
 
 function useQuery() {
   let params = new URLSearchParams(useLocation().search);
