@@ -68,8 +68,8 @@ export const Brew = () => {
           <Navbar.Brand href="/" className="text-dark">
             <img
               src={WordbrewLogo}
-              width="25"
-              height="32"
+              width="28"
+              height="36"
               className="d-inline-block align-top"
               alt="WordBrew Logo"
             />{' '}
