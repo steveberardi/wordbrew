@@ -11,8 +11,8 @@ import { Accordion } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
 
 import { Footer } from './Footer';
-import WordbrewLogo from '../images/wordbrew-small.png';
-import BrewingSVG from '../images/wordbrew-loading.svg';
+import WordbrewLogo from '../images/logo.svg';
+import BrewingSVG from '../images/loading.svg';
 
 function useQuery() {
   let params = new URLSearchParams(useLocation().search);
@@ -68,8 +68,8 @@ export const Brew = () => {
           <Navbar.Brand href="/" className="text-dark">
             <img
               src={WordbrewLogo}
-              width="25"
-              height="32"
+              width="28"
+              height="36"
               className="d-inline-block align-top"
               alt="WordBrew Logo"
             />{' '}
@@ -126,14 +126,14 @@ export const Brew = () => {
                     </Accordion.Item>  
                   ))
                   :
-                  <p className="alert alert-dark lead text-center m-0">
+                  <div className="alert alert-dark lead text-center m-0">
                     <br/><br/>
                     <img height="64" width="64" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xMiAwYzYuNjIzIDAgMTIgNS4zNzcgMTIgMTJzLTUuMzc3IDEyLTEyIDEyLTEyLTUuMzc3LTEyLTEyIDUuMzc3LTEyIDEyLTEyem0wIDFjNi4wNzEgMCAxMSA0LjkyOSAxMSAxMXMtNC45MjkgMTEtMTEgMTEtMTEtNC45MjktMTEtMTEgNC45MjktMTEgMTEtMTF6bS0uMDE5IDE0YzEuODQyLjAwNSAzLjYxMy43OTEgNS4xMTcgMi4yMjRsLS42NjMuNzQ4Yy0xLjMyMy0xLjI3LTIuODY2LTEuOTY4LTQuNDU2LTEuOTcyaC0uMDEzYy0xLjU2OCAwLTMuMDkyLjY3Ny00LjQgMS45MTRsLS42NjQtLjc0OGMxLjQ5MS0xLjQgMy4yNDMtMi4xNjYgNS4wNjQtMi4xNjZoLjAxNXptLTMuNDk0LTYuNWMuNTUyIDAgMSAuNDQ4IDEgMXMtLjQ0OCAxLTEgMS0xLS40NDgtMS0xIC40NDgtMSAxLTF6bTcuMDEzIDBjLjU1MiAwIDEgLjQ0OCAxIDFzLS40NDggMS0xIDEtMS0uNDQ4LTEtMSAuNDQ4LTEgMS0xeiIvPjwvc3ZnPg=="/>
                     <br/><br/>
                     
                     <p>No results found, keep brewing!</p>
                     <br/><br/>
-                  </p>
+                  </div>
                 }
               </Accordion>
             </Col>

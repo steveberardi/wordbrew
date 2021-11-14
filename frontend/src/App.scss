@@ -54,6 +54,13 @@ a.navbar-brand {
     margin: 2px;
 }
 
+// For GitHub button link in footer
+.btn-outline-primary:hover {
+  svg path {
+    fill: #684808;
+  }
+}
+
 /*
     Animations
 */
