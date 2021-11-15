@@ -22,8 +22,8 @@ function useQuery() {
 
 const ResultColumns = ({header, results}) => {
   return (
-    <div>
-      <h4>{header}</h4>
+    <div className="border-bottom border-secondary pb-3 mb-4">
+      <p className="fs-4 fw-bold my-1">{header}</p>
       <div className="row row-cols-2 row-cols-sm-2 row-cols-md-4">{ results.map( (item, index) => (
         <div className="col" key={index}>
           <a href={`/brew/?query=${item}`}>
@@ -32,7 +32,6 @@ const ResultColumns = ({header, results}) => {
         </div>
       )) }
       </div>
-      <hr/><br/>
     </div>
   )
 };
@@ -114,6 +113,10 @@ export const Brew = () => {
                           <ResultColumns header="More Specific" results={result.hyponyms} />  
                         }
                         {
+                          result.meronyms.length > 0 &&
+                          <ResultColumns header="Specific Features or Parts" results={result.meronyms} />
+                        }
+                        {
                           result.hypernyms.length > 0 &&
                           <ResultColumns header="Less Specific" results={result.hypernyms} />
                         }
@@ -126,12 +129,15 @@ export const Brew = () => {
                     </Accordion.Item>  
                   ))
                   :
-                  <div className="alert alert-dark lead text-center m-0">
+                  <div className="alert alert-dark text-center m-0">
                     <br/><br/>
-                    <img height="64" width="64" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xMiAwYzYuNjIzIDAgMTIgNS4zNzcgMTIgMTJzLTUuMzc3IDEyLTEyIDEyLTEyLTUuMzc3LTEyLTEyIDUuMzc3LTEyIDEyLTEyem0wIDFjNi4wNzEgMCAxMSA0LjkyOSAxMSAxMXMtNC45MjkgMTEtMTEgMTEtMTEtNC45MjktMTEtMTEgNC45MjktMTEgMTEtMTF6bS0uMDE5IDE0YzEuODQyLjAwNSAzLjYxMy43OTEgNS4xMTcgMi4yMjRsLS42NjMuNzQ4Yy0xLjMyMy0xLjI3LTIuODY2LTEuOTY4LTQuNDU2LTEuOTcyaC0uMDEzYy0xLjU2OCAwLTMuMDkyLjY3Ny00LjQgMS45MTRsLS42NjQtLjc0OGMxLjQ5MS0xLjQgMy4yNDMtMi4xNjYgNS4wNjQtMi4xNjZoLjAxNXptLTMuNDk0LTYuNWMuNTUyIDAgMSAuNDQ4IDEgMXMtLjQ0OCAxLTEgMS0xLS40NDgtMS0xIC40NDgtMSAxLTF6bTcuMDEzIDBjLjU1MiAwIDEgLjQ0OCAxIDFzLS40NDggMS0xIDEtMS0uNDQ4LTEtMSAuNDQ4LTEgMS0xeiIvPjwvc3ZnPg=="/>
+
+                    <svg width="90" viewBox="0 0 25 25" fill="#684808" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm-.019 14c1.842.005 3.613.791 5.117 2.224l-.663.748c-1.323-1.27-2.866-1.968-4.456-1.972h-.013c-1.568 0-3.092.677-4.4 1.914l-.664-.748c1.491-1.4 3.243-2.166 5.064-2.166h.015zm-3.494-6.5c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm7.013 0c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1z"/></svg>
+
                     <br/><br/>
                     
-                    <p>No results found, keep brewing!</p>
+                    <p className="fs-4 lead">No results found, keep brewing!</p>
+
                     <br/><br/>
                   </div>
                 }
