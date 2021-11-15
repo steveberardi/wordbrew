@@ -22,8 +22,8 @@ function useQuery() {
 
 const ResultColumns = ({header, results}) => {
   return (
-    <div>
-      <p className="fs-4 fw-bold">{header}</p>
+    <div className="border-bottom border-secondary pb-3 mb-4">
+      <p className="fs-4 fw-bold my-1">{header}</p>
       <div className="row row-cols-2 row-cols-sm-2 row-cols-md-4">{ results.map( (item, index) => (
         <div className="col" key={index}>
           <a href={`/brew/?query=${item}`}>
@@ -32,7 +32,6 @@ const ResultColumns = ({header, results}) => {
         </div>
       )) }
       </div>
-      <hr/><br/>
     </div>
   )
 };
