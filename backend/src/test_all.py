@@ -17,7 +17,7 @@ def test_brew_with_real_word():
         [
             "id",
             "pos",
-            "weight",
+            "score",
             "definition",
             "hypernyms",
             "hyponyms",

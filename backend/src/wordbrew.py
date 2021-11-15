@@ -26,13 +26,13 @@ def brew(query):
         for w in ss.relations().get("similar") or []:
             similar.update(w.lemmas())
 
-        weight = len(hyponyms) + len(meronyms) + len(similar)
+        score = len(hyponyms) + len(meronyms) + len(similar)
 
         result.append(
             {
                 "id": ss.id,
                 "pos": ss.pos,
-                "weight": weight,
+                "score": score,
                 "definition": ss.definition(),
                 "hypernyms": list(hypernyms),
                 "hyponyms": list(hyponyms),
@@ -42,10 +42,10 @@ def brew(query):
             }
         )
 
-    # sort by amount of data and remove low weight results
+    # sort by amount of data and remove low score results
     return list(
         filter(
-            lambda d: d["weight"] > 1,
-            sorted(result, key=lambda k: k["weight"], reverse=True),
+            lambda d: d["score"] > 1,
+            sorted(result, key=lambda k: k["score"], reverse=True),
         )
     )
