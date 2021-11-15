@@ -23,7 +23,7 @@ function useQuery() {
 const ResultColumns = ({header, results}) => {
   return (
     <div>
-      <h4>{header}</h4>
+      <p className="fs-4 fw-bold">{header}</p>
       <div className="row row-cols-2 row-cols-sm-2 row-cols-md-4">{ results.map( (item, index) => (
         <div className="col" key={index}>
           <a href={`/brew/?query=${item}`}>
@@ -112,6 +112,10 @@ export const Brew = () => {
                         {
                           result.hyponyms.length > 0 && 
                           <ResultColumns header="More Specific" results={result.hyponyms} />  
+                        }
+                        {
+                          result.meronyms.length > 0 &&
+                          <ResultColumns header="Specific Features or Parts" results={result.meronyms} />
                         }
                         {
                           result.hypernyms.length > 0 &&

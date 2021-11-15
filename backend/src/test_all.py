@@ -21,6 +21,7 @@ def test_brew_with_real_word():
             "definition",
             "hypernyms",
             "hyponyms",
+            "meronyms",
             "lemmas",
             "similar",
         ]

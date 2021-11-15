@@ -18,11 +18,15 @@ def brew(query):
         for hyponym in ss.hyponyms():
             hyponyms.update(hyponym.lemmas())
 
+        meronyms = set()
+        for meronym in ss.meronyms():
+            meronyms.update(meronym.lemmas())
+
         similar = set()
         for w in ss.relations().get("similar") or []:
             similar.update(w.lemmas())
 
-        weight = len(hyponyms) + len(similar)
+        weight = len(hyponyms) + len(meronyms) + len(similar)
 
         result.append(
             {
@@ -32,6 +36,7 @@ def brew(query):
                 "definition": ss.definition(),
                 "hypernyms": list(hypernyms),
                 "hyponyms": list(hyponyms),
+                "meronyms": list(meronyms),
                 "lemmas": ss.lemmas(),
                 "similar": list(similar),
             }
