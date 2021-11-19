@@ -57,8 +57,14 @@ export const Brew = () => {
           setError(error);
         }
       )
-
   }, [query]);
+
+  function handleSenseClick(e) {
+    e.target.scrollIntoView({
+      block: "end",
+      behavior: "smooth"
+    });
+  }
 
   return (
     <div>
@@ -99,7 +105,7 @@ export const Brew = () => {
               <Accordion defaultActiveKey="0">
                 {results.length > 0 ?
                   results.map( (result, index) => (
-                    <Accordion.Item eventKey={index.toString()} key={index}>
+                    <Accordion.Item eventKey={index.toString()} key={index} onClick={handleSenseClick}>
 
                       <Accordion.Header>
                         <span className="fs-2 fw-bold">{query}</span>
@@ -132,7 +138,7 @@ export const Brew = () => {
                   <div className="alert alert-dark text-center m-0">
                     <br/><br/>
 
-                    <svg width="90" viewBox="0 0 25 25" fill="#684808" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm-.019 14c1.842.005 3.613.791 5.117 2.224l-.663.748c-1.323-1.27-2.866-1.968-4.456-1.972h-.013c-1.568 0-3.092.677-4.4 1.914l-.664-.748c1.491-1.4 3.243-2.166 5.064-2.166h.015zm-3.494-6.5c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm7.013 0c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1z"/></svg>
+                    <svg width="90" viewBox="0 0 25 25" fill="#684808" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd"><path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm-.019 14c1.842.005 3.613.791 5.117 2.224l-.663.748c-1.323-1.27-2.866-1.968-4.456-1.972h-.013c-1.568 0-3.092.677-4.4 1.914l-.664-.748c1.491-1.4 3.243-2.166 5.064-2.166h.015zm-3.494-6.5c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm7.013 0c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1z"/></svg>
 
                     <br/><br/>
                     
