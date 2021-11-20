@@ -30,7 +30,8 @@ $min-contrast-ratio: 3;
 $accordion-color: $medium;
 $accordion-bg: $light;
 $accordion-button-bg: $secondary;
-
+$accordion-border-radius: 0;
+$accordion-border-width: 0;
 $accordion-button-active-bg: $primary;
 $accordion-button-active-color: $light;
 
@@ -53,6 +54,10 @@ a.navbar-brand {
 
 .badge {
     margin: 2px;
+}
+
+.accordion:not(:last-of-type) {
+  border-bottom: 1px solid $light;
 }
 
 // For GitHub button link in footer
