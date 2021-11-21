@@ -1,7 +1,7 @@
 PROJECT_ID=$(shell gcloud config get-value core/project)
 REPO_NAME=$(shell basename $(CURDIR))
 SHORT_SHA=$(shell git rev-parse --short head)
-DOCKER_EXEC=docker exec -it wordbrew_backend_1
+DOCKER_EXEC=docker exec -it wordbrew_backend
 DOCKER_RUN=docker run -v $(shell pwd)/backend/src:/app/src wordbrew_backend bash -c
 
 format:

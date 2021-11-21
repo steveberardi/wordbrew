@@ -5,47 +5,52 @@ wn.config.allow_multithreading = True
 if os.environ.get("WN_DATA_PATH"):
     wn.config.data_directory = os.environ.get("WN_DATA_PATH")
 
+RELATIONS_DEFAULT = {
+    "hypernyms": ["hypernym", "instance_hypernym"],
+    "hyponyms": ["hyponym", "instance_hyponym"],
+    "meronyms": [
+        "meronym",
+        "mero_location",
+        "mero_member",
+        "mero_part",
+        "mero_portion",
+        "mero_substance",
+    ],
+    "similar": ["similar"],
+}
 
-def brew(query):
-    result = []
+
+def brew(query, relations=None, min_score=2, max_length=20):
+    results = []
+    relations = relations or RELATIONS_DEFAULT
+
     for ss in wn.synsets(query):
+        result = {
+            "id": ss.id,
+            "pos": ss.pos,
+            "definition": ss.definition(),
+            "lemmas": ss.lemmas(),
+        }
 
-        hypernyms = set()
-        for hypernym in ss.hypernyms():
-            hypernyms.update(hypernym.lemmas())
+        for relname, rels in relations.items():
+            lemmas = set()
+            for w in ss.get_related(*rels) or []:
+                lems = [lem for lem in w.lemmas() if len(lem) <= max_length]
+                lemmas.update(lems)
+            result[relname] = list(lemmas)
 
-        hyponyms = set()
-        for hyponym in ss.hyponyms():
-            hyponyms.update(hyponym.lemmas())
-
-        meronyms = set()
-        for meronym in ss.meronyms():
-            meronyms.update(meronym.lemmas())
-
-        similar = set()
-        for w in ss.relations().get("similar") or []:
-            similar.update(w.lemmas())
-
-        score = len(hyponyms) + len(meronyms) + len(similar)
-
-        result.append(
-            {
-                "id": ss.id,
-                "pos": ss.pos,
-                "score": score,
-                "definition": ss.definition(),
-                "hypernyms": list(hypernyms),
-                "hyponyms": list(hyponyms),
-                "meronyms": list(meronyms),
-                "lemmas": ss.lemmas(),
-                "similar": list(similar),
-            }
+        result["score"] = (
+            len(result.get("hyponyms", []))
+            + len(result.get("meronyms", []))
+            + len(result.get("similar", []))
         )
+
+        results.append(result)
 
     # sort by amount of data and remove low score results
     return list(
         filter(
-            lambda d: d["score"] > 1,
-            sorted(result, key=lambda k: k["score"], reverse=True),
+            lambda d: d["score"] >= min_score,
+            sorted(results, key=lambda k: k["score"], reverse=True),
         )
     )

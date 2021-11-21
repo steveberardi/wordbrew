@@ -109,7 +109,7 @@ export const Brew = () => {
                       <Accordion.Body>
                         {
                           result.hyponyms.length > 0 && 
-                          <ResultColumns header="More Specific" results={result.hyponyms} />  
+                          <ResultColumns header="More Specific" results={result.hyponyms} />
                         }
                         {
                           result.meronyms.length > 0 &&
