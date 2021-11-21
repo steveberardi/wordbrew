@@ -20,7 +20,7 @@ RELATIONS_DEFAULT = {
 }
 
 
-def brew(query, relations=None, min_score=2):
+def brew(query, relations=None, min_score=2, max_length=20):
     results = []
     relations = relations or RELATIONS_DEFAULT
 
@@ -35,7 +35,7 @@ def brew(query, relations=None, min_score=2):
         for relname, rels in relations.items():
             lemmas = set()
             for w in ss.get_related(*rels) or []:
-                lemmas.update(w.lemmas())
+                lemmas.update([lem for lem in w.lemmas() if len(lem) <= max_length])
             result[relname] = list(lemmas)
 
         result["score"] = (
