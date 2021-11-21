@@ -20,7 +20,7 @@ export const Footer = () => {
                             <div className="col-md-10">
                                 <div className="card-body">
                                     <h3 className="card-title">About</h3>
-                                    <p><strong>WordBrew</strong> is a tool for exploring words and their related words. It's similar to a thesaurus, but also much more. It's powered by the wonderful <a href="https://wordnet.princeton.edu/">WordNet</a> database.</p>
+                                    <p>WordBrew is a tool for exploring words and their related words. It's similar to a thesaurus, but also much more. It's powered by the wonderful <a href="https://wordnet.princeton.edu/">WordNet</a> database.</p>
 
                                     <br/>
                                     <a className="btn btn-outline-primary text-dark opacity-75" href="https://github.com/steveberardi/wordbrew" style={{textDecoration: "none"}}>
