@@ -20,7 +20,7 @@ RELATIONS_DEFAULT = {
 }
 
 
-def brew(query, relations=None):
+def brew(query, relations=None, min_score=2):
     results = []
     relations = relations or RELATIONS_DEFAULT
 
@@ -49,7 +49,7 @@ def brew(query, relations=None):
     # sort by amount of data and remove low score results
     return list(
         filter(
-            lambda d: d["score"] > 1,
+            lambda d: d["score"] >= min_score,
             sorted(results, key=lambda k: k["score"], reverse=True),
         )
     )
