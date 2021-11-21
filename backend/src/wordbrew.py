@@ -35,7 +35,8 @@ def brew(query, relations=None, min_score=2, max_length=20):
         for relname, rels in relations.items():
             lemmas = set()
             for w in ss.get_related(*rels) or []:
-                lemmas.update([lem for lem in w.lemmas() if len(lem) <= max_length])
+                lems = [lem for lem in w.lemmas() if len(lem) <= max_length]
+                lemmas.update(lems)
             result[relname] = list(lemmas)
 
         result["score"] = (
