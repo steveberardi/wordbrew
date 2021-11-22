@@ -25,8 +25,10 @@ RUN flake8 /app/src &&  black /app/src --check && pytest --cov=/app/src --cov-re
 
 # Development Server
 FROM devbase as devserver
-CMD  ["gunicorn", "--reload", "--bind=0.0.0.0:8000", "--workers=2", "--threads=4", "--timeout=0", "--chdir=/app/src", "server:app"]
+ENV GUNICORN_CMD_ARGS="--reload --bind=0.0.0.0:8000 --workers=2 --threads=4 --timeout=0 --chdir=/app/src"
+CMD  ["gunicorn", "server:app"]
 
 # Production
 FROM base as prod
-CMD  ["gunicorn", "--bind=0.0.0.0:8000", "--workers=4", "--threads=8", "--chdir=/app/src", "server:app"]
+ENV GUNICORN_CMD_ARGS="--bind=0.0.0.0:8000 --workers=3 --threads=2 --max-requests=100 --max-requests-jitter=10 --chdir=/app/src"
+CMD  ["gunicorn", "server:app"]
