@@ -136,7 +136,11 @@ export const Brew = () => {
 
                   <br/><br/>
 
-                  <p className="fs-4 lead">No results found, keep brewing!</p>
+                  { error ?
+                    <p className="fs-4 lead">Error occurred while brewing. Try again!</p>
+                    :
+                    <p className="fs-4 lead">No results found, keep brewing!</p>
+                  }
 
                   <br/><br/>
                 </div>
