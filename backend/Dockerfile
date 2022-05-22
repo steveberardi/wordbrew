@@ -1,4 +1,4 @@
-FROM python:3.9.4-slim as base
+FROM python:3.9.12-slim-bullseye as base
 
 EXPOSE 8000
 
